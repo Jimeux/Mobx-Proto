@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "noLib": false,
+    "jsx": "react",
+    "outDir": "dist",
+    "strictNullChecks": true
+  },
+  "files": [
+    "./typings/index.d.ts"
+  ],
+  "compileOnSave": false,
+  "exclude": [
+    "node_modules",
+    "static"
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Sakata",
+      "namae": "坂田"
+    },
+    {
+      "id": 1,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Matsumoto",
+      "namae": "松本"
+    },
+    {
+      "id": 2,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Houki",
+      "namae": "寳亀"
+    },
+    {
+      "id": 3,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "James",
+      "namae": "ジェームス"
+    },
+    {
+      "id": 4,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Pierre",
+      "namae": "ピエール"
+    },
+    {
+      "id": 5,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Internet Media",
+      "name": "Uehara",
+      "namae": "上原"
+    },
+    {
+      "id": 6,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Wakamatsu",
+      "namae": "若松"
+    },
+    {
+      "id": 7,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Hamamoto",
+      "namae": "濱本"
+    },
+    {
+      "id": 8,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Human Resources",
+      "name": "Masuda",
+      "namae": "増田"
+    },
+    {
+      "id": 9,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Human Resources",
+      "name": "Okuda",
+      "namae": "奥田"
+    },
+    {
+      "id": 10,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Tsukamoto",
+      "namae": "塚本"
+    },
+    {
+      "id": 11,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Executive",
+      "name": "Doi",
+      "namae": "土居"
+    },
+    {
+      "id": 12,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Tanaka",
+      "namae": "田中"
+    },
+    {
+      "id": 13,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Internet Media",
+      "name": "Mitsuyama",
+      "namae": "光山"
+    },
+    {
+      "id": 14,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Executive",
+      "name": "Takahashi",
+      "namae": "高橋"
+    },
+    {
+      "id": 15,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Executive",
+      "name": "Takashina",
+      "namae": "高階"
+    },
+    {
+      "id": 16,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Jim",
+      "namae": "ジム"
+    },
+    {
+      "id": 17,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Consulting",
+      "name": "Takato",
+      "namae": "たかと"
+    },
+    {
+      "id": 18,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Human Resources",
+      "name": "Kamohara",
+      "namae": "蒲原"
+    },
+    {
+      "id": 19,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Nishimura",
+      "namae": "西村"
+    },
+    {
+      "id": 20,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Sato 1",
+      "namae": "砂糖ワン"
+    },
+    {
+      "id": 21,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Development",
+      "name": "Sato 2",
+      "namae": "砂糖ツー"
+    },
+    {
+      "id": 22,
+      "avatar": "https://placehold.it/28x28",
+      "department": "Internet Media",
+      "name": "Fukuda",
+      "namae": "福田"
+    }
+  ]
+}
