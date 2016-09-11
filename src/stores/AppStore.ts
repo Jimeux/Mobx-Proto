@@ -1,5 +1,5 @@
-import {observable, action, computed} from 'mobx'
-import User from "../models/User";
+import {observable, action, computed} from "mobx"
+import User from "../models/User"
 
 export default class AppStore {
 

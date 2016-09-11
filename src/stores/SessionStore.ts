@@ -1,4 +1,4 @@
-import {observable, action, computed, map} from 'mobx'
+import {observable, action, map} from "mobx"
 import AppStore from "./AppStore"
 import User from "../models/User"
 import {UserJson} from "../models/User"

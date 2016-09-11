@@ -1,7 +1,7 @@
-import {observable, action} from 'mobx'
-import AppStore from "./AppStore";
-import UserService from "../services/UserService";
-import User from "../models/User";
+import {observable, action} from "mobx"
+import AppStore from "./AppStore"
+import UserService from "../services/UserService"
+import User from "../models/User"
 
 export default class UserStore {
 
