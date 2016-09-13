@@ -1,5 +1,6 @@
 import {observable, action, computed} from "mobx"
 import User from "../models/User"
+import History from "react-router/lib/History"
 
 export default class AppStore {
 
@@ -7,9 +8,9 @@ export default class AppStore {
   @observable currentUser: User | null = null
   @observable error: string | null = null
 
-  private history
+  private history: History
 
-  constructor(history) {
+  constructor(history: History) {
     this.history = history
   }
 

@@ -18,7 +18,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
-    extensions: ['', '.js', '.ts', '.tsx']
+    extensions: ['', '.js', '.ts', '.tsx'],
+    root: path.join(__dirname, 'src')
   },
   module: {
     loaders: [{

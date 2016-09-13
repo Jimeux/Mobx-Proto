@@ -3,15 +3,13 @@ export default class BaseService {
 
   static endpoint = "http://localhost:3000"
 
-  private fetch
-  private basePath: String
+  private basePath: string
 
-  constructor(fetch: Object, basePath: String) {
-    this.fetch = fetch
+  constructor(basePath: string) {
     this.basePath = `${BaseService.endpoint}/${basePath}`
   }
 
-  async getRequest(path: String): Promise<any> {
+  async getRequest(path: string): Promise<any> {
     const response = await fetch(`${this.basePath}/${path}`)
 
     if (response.ok) {

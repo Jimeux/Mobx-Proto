@@ -17,11 +17,11 @@ useStrict(true)
 
 const appStore = new AppStore(browserHistory)
 const sessionStore = new SessionStore(appStore)
-const userStore = new UserStore(appStore, new UserService(window.fetch))
+const userStore = new UserStore(appStore, new UserService())
 
 const stores = {appStore, sessionStore, userStore}
 
-const authRequired = (nextState, replace) => {
+const authRequired = (nextState: Object, replace: Function) => {
   if (!appStore.isAuthenticated)
     replace("/login")
 }

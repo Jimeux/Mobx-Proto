@@ -1,10 +1,12 @@
 {
   "globalDependencies": {
     "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "fetch-mock": "registry:dt/fetch-mock#5.0.0+20160829142453",
     "mocha": "registry:dt/mocha#2.2.5+20160720003353",
     "react": "registry:dt/react#0.14.0+20160829191040",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "react-router": "registry:dt/react-router#2.0.0+20160828232736",
+    "sinon": "registry:dt/sinon#1.16.0+20160517064723",
     "whatwg-fetch": "registry:dt/whatwg-fetch#0.0.0+20160829180742"
   }
 }

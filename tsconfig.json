@@ -1,23 +1,21 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "es6",
+    "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "sourceMap": true,
     "declaration": false,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "removeComments": true,
     "experimentalDecorators": true,
     "noLib": false,
     "jsx": "react",
-    "outDir": "dist",
     "strictNullChecks": true
   },
-  "files": [
-    "./typings/index.d.ts"
-  ],
-  "compileOnSave": false,
   "exclude": [
-    "node_modules",
+   // "node_modules",
+    "test",
     "static"
   ]
 }

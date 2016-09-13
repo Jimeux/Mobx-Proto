@@ -1,19 +1,20 @@
 import {expect} from "chai"
+import * as fetchMock from "fetch-mock"
 import UserService from "../../src/services/UserService"
+import factory from "../support/factory"
 
 describe("UserService", () => {
 
-  it("compiles tests", async () => {
-    const userJson = {
-      "id": 16,
-      "avatar": "https://placehold.it/28x28",
-      "department": "Development",
-      "name": "Jim",
-      "namae": "ジム"
-    }
-    const userService = new UserService((i) => userJson)
-    const result = await userService.get(1)
-    expect(result).to.not.be.null
+  it("get", async () => {
+    const userJson = factory.user
+    fetchMock.get("*", userJson)
+
+    const userService = new UserService()
+    const user = await userService.get(1)
+
+    expect(user.name).to.equal(userJson.name)
+    expect(user.id).to.equal(userJson.id)
+    expect(user.avatar).to.equal(userJson.avatar)
   })
 
 })

@@ -1,11 +1,11 @@
-import {observable, action, map} from "mobx"
+import {observable, action, ObservableMap} from "mobx"
 import AppStore from "./AppStore"
 import User from "../models/User"
 import {UserJson} from "../models/User"
 
 export default class SessionStore {
 
-  @observable errors = map<string>()
+  @observable errors = new ObservableMap<string>()
   @observable failed: boolean = false
   @observable username: string = ""
   @observable password: string = ""
@@ -16,12 +16,12 @@ export default class SessionStore {
     this.appStore = appStore
   }
 
-  @action setUsername(username): void {
+  @action setUsername(username: string): void {
     this.validateUsername(username)
     this.username = username
   }
 
-  @action validateUsername(username): void {
+  @action validateUsername(username: string): void {
     if (username.length < 3)
       this.errors.set("username", "should be at least 3 characters long")
     else if (username.length > 100)

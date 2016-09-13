@@ -1,5 +1,4 @@
-import * as React from "react"
-import {Component} from "react"
+import React, {Component} from "react"
 import {observer} from "mobx-react"
 import {Link} from "react-router"
 import AppStore from "../stores/AppStore"
@@ -13,7 +12,6 @@ export default class MainLayout extends Component<MainLayoutProps, {}> {
 
   render() {
     const {currentUser, locale, setLocale, error} = this.props.appStore
-    const error = (error === null) ? null : <ErrorNotice error={error}/>
     return (
       <div className="main-layout">
         <Navbar user={currentUser} locale={locale} setLocale={setLocale}/>
@@ -22,10 +20,6 @@ export default class MainLayout extends Component<MainLayoutProps, {}> {
       </div>
     )
   }
-}
-
-const ob = {
-  james: "james"
 }
 
 const ErrorNotice = ({error}) =>

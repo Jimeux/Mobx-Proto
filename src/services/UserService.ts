@@ -3,8 +3,8 @@ import User from "../models/User"
 
 export default class UserService extends BaseService {
 
-  constructor(fetch: Object) {
-    super(fetch, "users")
+  constructor() {
+    super("users")
   }
 
   async get(id: number): Promise<User> {
