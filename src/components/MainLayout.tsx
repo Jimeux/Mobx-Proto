@@ -1,4 +1,5 @@
-import React, {Component} from "react"
+import * as React from "react"
+import {Component} from "react"
 import {observer} from "mobx-react"
 import {Link} from "react-router"
 import AppStore from "../stores/AppStore"

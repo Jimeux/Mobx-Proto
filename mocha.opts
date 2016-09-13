@@ -1,3 +1,4 @@
+--require ./test/support/setup.js
 --compilers ts:ts-node/register,tsx:ts-node/register
---recursive
+--recursive ./test/**/*.{ts,tsx}
 --reporter dot

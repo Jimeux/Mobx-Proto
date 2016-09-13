@@ -5,16 +5,22 @@ import factory from "../support/factory"
 
 describe("UserService", () => {
 
-  it("get", async () => {
-    const userJson = factory.user
-    fetchMock.get("*", userJson)
+  afterEach(() => {
+    fetchMock.restore()
+  })
 
-    const userService = new UserService()
-    const user = await userService.get(1)
+  describe("get", () => {
 
-    expect(user.name).to.equal(userJson.name)
-    expect(user.id).to.equal(userJson.id)
-    expect(user.avatar).to.equal(userJson.avatar)
+    it("returns a User instance on success", async() => {
+      const userJson = factory.user
+      fetchMock.get("*", userJson)
+
+      const userService = new UserService()
+      const user = await userService.get(1)
+
+      expect(user.id).to.equal(userJson.id)
+    })
+
   })
 
 })

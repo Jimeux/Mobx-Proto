@@ -1,4 +1,5 @@
-import React, {Component} from "react"
+import * as React from "react"
+import {Component} from "react"
 import {observer} from "mobx-react"
 import UserStore from "../stores/UserStore"
 import User from "../models/User"
