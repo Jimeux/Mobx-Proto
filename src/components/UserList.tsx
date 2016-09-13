@@ -11,13 +11,11 @@ interface UserListProps {
 @observer(["userStore"])
 export default class UserList extends Component<UserListProps, {}> {
 
-  private userStore = this.props.userStore
-
   render() {
     return (
       <div>
         <h4>Users</h4>
-        {this.userStore.getUsers().map(this.renderUser)}
+        {this.props.userStore.getUsers().map(this.renderUser)}
       </div>
     )
   }
@@ -25,8 +23,8 @@ export default class UserList extends Component<UserListProps, {}> {
   renderUser = (user: User) =>
     <UserItem key={`user-${user.id}`}
               user={user}
-              active={this.userStore.isSelectedUser(user.id)}
-              onClick={() => this.userStore.fetchUser(user.id)}/>
+              active={this.props.userStore.isSelectedUser(user.id)}
+              onClick={() => this.props.userStore.fetchUser(user.id)}/>
 
 }
 

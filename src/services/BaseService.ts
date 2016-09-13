@@ -13,6 +13,7 @@ export default class BaseService {
 
   async getRequest(path: String): Promise<any> {
     const response = await fetch(`${this.basePath}/${path}`)
+
     if (response.ok) {
       return response.json()
     } else {

@@ -5,7 +5,7 @@ import User from "../models/User"
 
 export default class UserStore {
 
-  @observable users: Array<User> = []
+  @observable users: Array<User> = null
   @observable user: User | null = null
 
   private appStore: AppStore

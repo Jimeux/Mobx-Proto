@@ -13,16 +13,19 @@ export default class MainLayout extends Component<MainLayoutProps, {}> {
 
   render() {
     const {currentUser, locale, setLocale, error} = this.props.appStore
-
+    const error = (error === null) ? null : <ErrorNotice error={error}/>
     return (
       <div className="main-layout">
         <Navbar user={currentUser} locale={locale} setLocale={setLocale}/>
-        {(error === null) ? null : <ErrorNotice error={error}/>}
+        {error}
         <main>{this.props.children}</main>
       </div>
     )
   }
+}
 
+const ob = {
+  james: "james"
 }
 
 const ErrorNotice = ({error}) =>
