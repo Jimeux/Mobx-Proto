@@ -1,7 +1,6 @@
 /// <reference path="globals/chai/index.d.ts" />
 /// <reference path="globals/enzyme/index.d.ts" />
 /// <reference path="globals/fetch-mock/index.d.ts" />
-/// <reference path="globals/jsdom/index.d.ts" />
 /// <reference path="globals/mocha/index.d.ts" />
 /// <reference path="globals/react-addons-test-utils/index.d.ts" />
 /// <reference path="globals/react-dom/index.d.ts" />

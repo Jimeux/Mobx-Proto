@@ -6,7 +6,7 @@
     "module": "commonjs",
     "sourceMap": true,
     "declaration": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "removeComments": true,
     "experimentalDecorators": true,
     "noLib": false,
@@ -14,7 +14,7 @@
     "strictNullChecks": true
   },
   "exclude": [
-   // "node_modules",
+    "node_modules",
     "test",
     "static"
   ]
