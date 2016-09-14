@@ -2,20 +2,26 @@
   "compileOnSave": false,
   "compilerOptions": {
     "target": "es6",
-    "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "sourceMap": true,
     "declaration": false,
+    "outDir": "tmp",
     "noImplicitAny": false,
     "removeComments": true,
     "experimentalDecorators": true,
     "noLib": false,
     "jsx": "react",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": "."
   },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "typings/index.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "test",
-    "static"
+    "public"
   ]
 }

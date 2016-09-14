@@ -6,7 +6,7 @@ Mobx-Proto
 ```
 npm install
 npm start
-json-server db.json
+npm run serve
 open http://localhost:8000
 ```
 
@@ -14,5 +14,6 @@ open http://localhost:8000
 
 ```
 npm test
+npm run test:single
 ```
 

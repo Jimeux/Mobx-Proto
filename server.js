@@ -1,9 +1,11 @@
+const path = require("path")
 const webpack = require("webpack")
 const WebpackDevServer = require("webpack-dev-server")
-const config = require("./webpack.config")
+const config = require("./config/webpack.config")
 
 new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
+  contentBase: path.join(__dirname),
+  publicPath: "/public/",
   colors: true,
   stats: "minimal",
   historyApiFallback: true
