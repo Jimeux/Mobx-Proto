@@ -2,6 +2,7 @@ import * as React from "react"
 import {render} from "react-dom"
 import {useStrict} from "mobx"
 import {Provider} from "mobx-react"
+import DevTools from "mobx-react-devtools"
 import {Router, Route, browserHistory} from "react-router"
 
 import UserService from "./services/UserService"
@@ -30,18 +31,22 @@ const root = document.getElementById("root")
 
 if (root !== null) {
   render(
-    <Provider {...stores}>
-      <Router history={browserHistory}>
+    <div>
+      <DevTools/>
 
-        <Route component={MainLayout} onEnter={authRequired}>
-          <Route path="/" component={App}/>
-        </Route>
+      <Provider {...stores}>
+        <Router history={browserHistory}>
 
-        <Route path="/login" component={LoginForm}/>
-        <Route path="*" component={NotFound}/>
+          <Route component={MainLayout} onEnter={authRequired}>
+            <Route path="/" component={App}/>
+          </Route>
 
-      </Router>
-    </Provider>,
+          <Route path="/login" component={LoginForm}/>
+          <Route path="*" component={NotFound}/>
+
+        </Router>
+      </Provider>
+    </div>,
     root
   )
 }

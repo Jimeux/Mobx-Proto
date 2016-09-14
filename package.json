@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Prototype",
   "scripts": {
-    "test": "mocha --opts mocha.opts",
+    "test": "npm run lint && mocha --opts mocha.opts",
     "start": "node server.js",
     "lint": "tslint -c tslint.json '{test,src}/**/*.{ts,tsx}'"
   },
