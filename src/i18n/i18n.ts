@@ -29,9 +29,9 @@ const en = {
     },
 
     "error": {
-      "too_short": "should be at least {{min}} characters long",
-      "too_long": "should be no more than {{max}} characters long",
-      "alpha_num": "can contain only letters, numbers and - or _"
+      "too_short": " should be at least {{min}} characters long",
+      "too_long": " should be no more than {{max}} characters long",
+      "alpha_num": " can contain only letters, numbers and - or _"
     }
   }
 }

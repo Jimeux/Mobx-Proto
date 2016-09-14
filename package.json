@@ -4,6 +4,7 @@
   "description": "Prototype",
   "scripts": {
     "test": "npm run lint && mocha --opts mocha.opts",
+    "test:watch": "npm test -- --watch",
     "start": "node server.js",
     "lint": "tslint -c tslint.json '{test,src}/**/*.{ts,tsx}'"
   },

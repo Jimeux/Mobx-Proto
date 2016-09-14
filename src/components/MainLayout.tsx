@@ -31,9 +31,9 @@ const Brand = () =>
     <Link to="/">{t("nav.brand")}</Link>
   </div>
 
-const LoginMenu = ({user, locale, switchLocale}) =>
+const LoginMenu = ({currentUser, locale, switchLocale}) =>
   <div className="login-menu">
-    {t("nav.message", {name: user.name})}&nbsp;
+    {currentUser ? t("nav.message", {name: currentUser.name}) : null}&nbsp;
     <button onClick={() => switchLocale()}>{locale}</button>
   </div>
 

@@ -36,14 +36,11 @@ if (root !== null) {
 
       <Provider {...stores}>
         <Router history={browserHistory}>
-
-          <Route component={MainLayout} onEnter={authRequired}>
-            <Route path="/" component={App}/>
+          <Route component={MainLayout}>
+            <Route path="/" component={App} onEnter={authRequired}/>
+            <Route path="/login" component={LoginForm}/>
+            <Route path="*" component={NotFound}/>
           </Route>
-
-          <Route path="/login" component={LoginForm}/>
-          <Route path="*" component={NotFound}/>
-
         </Router>
       </Provider>
     </div>,
