@@ -17,12 +17,12 @@ export default class User {
 
   private constructor(id: number, email: string, name: string,
                       namae: string, avatar: string, department: string) {
-    this.id = id;
-    this.email = email;
-    this.name = name;
-    this.namae = namae;
-    this.avatar = avatar;
-    this.department = department;
+    this.id = id
+    this.email = email
+    this.name = name
+    this.namae = namae
+    this.avatar = avatar
+    this.department = department
   }
 
   static create(json: UserJson) {

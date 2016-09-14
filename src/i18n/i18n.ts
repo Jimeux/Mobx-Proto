@@ -31,7 +31,7 @@ const en = {
     "error": {
       "too_short": "should be at least {{min}} characters long",
       "too_long": "should be no more than {{max}} characters long",
-      "alpha_num": "can contain only letters, numbers and - or _",
+      "alpha_num": "can contain only letters, numbers and - or _"
     }
   }
 }
@@ -62,7 +62,7 @@ const ja = {
     "error": {
       "too_short": "は{{min}}以上の値にしてください",
       "too_long": "は{{max}}以下の値にしてください",
-      "alpha_num": "は半角英数字文字または-_のみを入力してください",
+      "alpha_num": "は半角英数字文字または-_のみを入力してください"
     }
   }
 }
