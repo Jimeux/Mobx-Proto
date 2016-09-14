@@ -1,10 +1,4 @@
-export interface UserJson {
-  id: number
-  email: string
-  name: string
-  namae: string
-  avatar: string
-  department: string
+export interface UserJson extends User {
 }
 
 export default class User {

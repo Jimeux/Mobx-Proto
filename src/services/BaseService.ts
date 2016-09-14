@@ -1,5 +1,5 @@
 
-export default class BaseService {
+abstract class BaseService {
 
   static endpoint = "http://localhost:3000"
 
@@ -21,3 +21,5 @@ export default class BaseService {
   }
 
 }
+
+export default BaseService
