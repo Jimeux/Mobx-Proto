@@ -1,6 +1,7 @@
 import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
+import {t} from "../i18n/i18n"
 import UserStore from "../stores/UserStore"
 import User from "../models/User"
 
@@ -14,7 +15,7 @@ export default class UserList extends Component<UserListProps, {}> {
   render() {
     return (
       <div>
-        <h4>Users</h4>
+        <h4>{t("users.title")}</h4>
         {this.props.userStore.getUsers().map(this.renderUser)}
       </div>
     )

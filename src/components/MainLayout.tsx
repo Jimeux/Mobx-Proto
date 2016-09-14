@@ -2,6 +2,7 @@ import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
 import {Link} from "react-router"
+import {t} from "../i18n/i18n"
 import AppStore from "../stores/AppStore"
 
 interface MainLayoutProps {
@@ -10,13 +11,12 @@ interface MainLayoutProps {
 
 @observer(["appStore"])
 export default class MainLayout extends Component<MainLayoutProps, {}> {
-
   render() {
-    const {currentUser, locale, setLocale, error} = this.props.appStore
+    const {currentUser, locale, switchLocale, error} = this.props.appStore
     return (
-      <div className="main-layout">
-        <Navbar user={currentUser} locale={locale} setLocale={setLocale}/>
-        {error}
+      <div className="main-layout" key={locale}>
+        <Navbar user={currentUser} locale={locale} switchLocale={switchLocale}/>
+        {error ? <ErrorNotice error={error}/> : null}
         <main>{this.props.children}</main>
       </div>
     )
@@ -28,15 +28,13 @@ const ErrorNotice = ({error}) =>
 
 const Brand = () =>
   <div className="brand">
-    <Link to="/">Appliv Cloud</Link>
+    <Link to="/">{t("nav.brand")}</Link>
   </div>
 
-const LoginMenu = ({user, locale, setLocale}) =>
+const LoginMenu = ({user, locale, switchLocale}) =>
   <div className="login-menu">
-    {locale === "en" ?
-      `You're logged in as ${user.name}` :
-      `${user.name}としてログインしています`}&nbsp;
-    <button onClick={() => setLocale("ja")}>{locale}</button>
+    {t("nav.message", {name: user.name})}&nbsp;
+    <button onClick={() => switchLocale()}>{locale}</button>
   </div>
 
 const Navbar = (props) =>

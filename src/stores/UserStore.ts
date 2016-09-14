@@ -2,6 +2,7 @@ import {observable, action} from "mobx"
 import AppStore from "./AppStore"
 import UserService from "../services/UserService"
 import User from "../models/User"
+import {t} from "../i18n/i18n"
 
 export default class UserStore {
 
@@ -29,7 +30,7 @@ export default class UserStore {
       const users = await this.userService.index(page)
 
       if (users === null)
-        this.appStore.setError("Unable to retrieve users.")
+        this.appStore.setError(t("users.error"))
       else
         this.receiveUsers(users)
     } catch (error) {

@@ -10,6 +10,7 @@
   "devDependencies": {
     "casual": "^1.5.4",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.1",
     "enzyme": "^2.4.1",
     "fetch-mock": "^5.1.2",
     "jsdom": "^9.5.0",
@@ -26,6 +27,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "i18next": "^3.4.1",
+    "i18next-browser-languagedetector": "^1.0.0",
     "mobx": "^2.5.1",
     "mobx-react": "^3.5.5",
     "react": "^15.3.1",

@@ -2,6 +2,7 @@ import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
 import SessionStore from "../stores/SessionStore"
+import {t} from "../i18n/i18n"
 
 interface LoginFormProps {
   sessionStore: SessionStore
@@ -15,10 +16,10 @@ export default class LoginForm extends Component<LoginFormProps, {}> {
 
     return (
       <div>
-        {store.failed ? <h4>Invalid username or password</h4> : null}
+        {store.failed ? <h4>{t("login.error")}</h4> : null}
 
         <label>
-          Username {store.errorFor("username")}
+          {t("login.username")}{store.errorFor("username")}
         </label>
 
         <br/>
@@ -28,7 +29,7 @@ export default class LoginForm extends Component<LoginFormProps, {}> {
         <br/>
 
         <label>
-          Password {store.errorFor("password")}
+          {t("login.password")}{store.errorFor("password")}
         </label>
 
         <br/>
@@ -37,7 +38,9 @@ export default class LoginForm extends Component<LoginFormProps, {}> {
 
         <br/>
 
-        <button onClick={() => store.login()}>Login</button>
+        <button onClick={() => store.login()}>
+          {t("login.submit")}
+        </button>
       </div>
     )
   }

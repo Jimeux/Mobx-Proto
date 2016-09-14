@@ -1,4 +1,5 @@
 import {observable, action, ObservableMap} from "mobx"
+import {t} from "../i18n/i18n"
 import AppStore from "./AppStore"
 import User from "../models/User"
 import {UserJson} from "../models/User"
@@ -23,11 +24,11 @@ export default class SessionStore {
 
   @action validateUsername(username: string): void {
     if (username.length < 3)
-      this.errors.set("username", "should be at least 3 characters long")
+      this.errors.set("username", t("error.too_short", {min: 3}))
     else if (username.length > 100)
-      this.errors.set("username", "should be no more than 100 characters long")
+      this.errors.set("username", t("error.too_short", {max: 100}))
     else if (!(!!username.match(/^[_\-\w]+$/)))
-      this.errors.set("username", "can contain only letters, numbers and - or _")
+      this.errors.set("username", t("error.alpha_num"))
     else
       this.errors.delete("username")
   }
@@ -39,9 +40,9 @@ export default class SessionStore {
 
   @action validatePassword(password: string): void {
     if (password.length < 4)
-      this.errors.set("password", "should be at least 4 characters long")
+      this.errors.set("password", t("error.too_short", {min: 4}))
     else if (password.length > 100)
-      this.errors.set("password", "should be no more than 100 characters long")
+      this.errors.set("password", t("error.too_short", {max: 100}))
     else
       this.errors.delete("password")
   }
