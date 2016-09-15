@@ -7,7 +7,8 @@
     "test:single": "npm run lint && mocha --opts ./config/mocha.opts",
     "start": "webpack --config ./config/webpack.config.dll.js && node server.js",
     "serve": "json-server ./config/db.json",
-    "lint": "tslint -c ./config/tslint.json '{test,src}/**/*.{ts,tsx}'"
+    "lint": "tslint -c ./config/tslint.json '{test,src}/**/*.{ts,tsx}'",
+    "tsc:debug": "tsc --diagnostics --listFiles"
   },
   "devDependencies": {
     "casual": "^1.5.4",

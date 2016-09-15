@@ -10,34 +10,35 @@ interface LoginFormProps {
 
 @observer(["sessionStore"])
 export default class LoginForm extends Component<LoginFormProps, {}> {
-
   render() {
     const store = this.props.sessionStore
 
     return (
       <div className="login-form">
+
         {store.failed ? <h4>{t("login.error")}</h4> : null}
 
-        <div className="form-group">
-          <label>{t("login.username")}{store.errorFor("username")}</label>
-          <input type="text"
-                 className="form-control"
-                 onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
-        </div>
+        <Input type="text"
+               label={t("login.username")}
+               error={store.errorFor("username")}
+               onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
 
-        <div className="form-group">
-          <label>{t("login.password")}{store.errorFor("password")}</label>
-          <input type="password"
-                 className="form-control"
-                 onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
-        </div>
+        <Input type="password"
+               label={t("login.password")}
+               error={store.errorFor("password")}
+               onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
 
-        <button className="btn btn-primary" onClick={() => store.login()}>
+        <button onClick={() => store.login()}>
           {t("login.submit")}
         </button>
 
       </div>
     )
   }
-
 }
+
+const Input = ({type, label, error, onChange}) =>
+  <div>
+    <label>{label}{error}</label>
+    <input type={type} onChange={onChange}/>
+  </div>

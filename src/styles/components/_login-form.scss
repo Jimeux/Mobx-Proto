@@ -1,6 +1,20 @@
-
 .login-form {
-
   padding: 20px;
+
+  div {
+    @extend .form-group;
+
+    label {
+      @extend .control-label
+    }
+
+    input {
+      @extend .form-control;
+    }
+  }
+
+  button {
+    @extend .btn, .btn-primary;
+  }
 
 }
