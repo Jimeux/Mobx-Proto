@@ -10,6 +10,7 @@
     "removeComments": true,
     "experimentalDecorators": true,
     "noLib": false,
+    "skipLibCheck": true,
     "jsx": "react",
     "strictNullChecks": true,
     "baseUrl": "."
