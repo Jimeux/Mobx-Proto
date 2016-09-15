@@ -14,6 +14,8 @@ import UserStore from "./stores/UserStore"
 import NotFound from "./components/NotFound"
 import MainLayout from "./components/MainLayout"
 
+import "./styles/main.scss"
+
 useStrict(true)
 
 const appStore = new AppStore(browserHistory)

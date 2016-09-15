@@ -15,32 +15,27 @@ export default class LoginForm extends Component<LoginFormProps, {}> {
     const store = this.props.sessionStore
 
     return (
-      <div>
+      <div className="login-form">
         {store.failed ? <h4>{t("login.error")}</h4> : null}
 
-        <label>
-          {t("login.username")}{store.errorFor("username")}
-        </label>
+        <div className="form-group">
+          <label>{t("login.username")}{store.errorFor("username")}</label>
+          <input type="text"
+                 className="form-control"
+                 onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
+        </div>
 
-        <br/>
+        <div className="form-group">
+          <label>{t("login.password")}{store.errorFor("password")}</label>
+          <input type="password"
+                 className="form-control"
+                 onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
+        </div>
 
-        <input type="text" onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
-
-        <br/>
-
-        <label>
-          {t("login.password")}{store.errorFor("password")}
-        </label>
-
-        <br/>
-
-        <input type="password" onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
-
-        <br/>
-
-        <button onClick={() => store.login()}>
+        <button className="btn btn-primary" onClick={() => store.login()}>
           {t("login.submit")}
         </button>
+
       </div>
     )
   }

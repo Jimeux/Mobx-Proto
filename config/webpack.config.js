@@ -9,7 +9,7 @@ module.exports = {
   devtool: "cheap-module-source-map",
   entry: {
     bundle: path.join(__dirname, "../src/index")
-},
+  },
   output: {
     path: outDir,
     filename: "[name].js",
@@ -27,11 +27,19 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.tsx?$/,
-      loaders: ["ts-loader"],
-      include: path.join(__dirname, "../src"),
-      exclude: /node_modules/
-    }]
+    loaders: [
+      {
+        test: /\.tsx?$/,
+        loaders: ["ts-loader"],
+        include: path.join(__dirname, "../src"),
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"],
+        include: path.join(__dirname, '../src/styles'),
+        cacheDirectory: true
+      },
+    ]
   }
 }
