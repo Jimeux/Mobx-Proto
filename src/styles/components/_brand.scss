@@ -1,0 +1,14 @@
+@import "../base/variables";
+
+.brand {
+  display: inline-block;
+
+  a {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+  }
+
+  a:hover {
+  }
+}

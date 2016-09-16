@@ -1,20 +1,24 @@
 .login-form {
   padding: 20px;
+  max-width: 400px;
+  margin: 100px auto;
 
   div {
     @extend .form-group;
 
     label {
-      @extend .control-label
+      @extend .control-label;
+      font-weight: 400;
     }
 
     input {
       @extend .form-control;
+      box-shadow: none;
     }
   }
 
   button {
-    @extend .btn, .btn-primary;
+    @extend .btn, .btn-primary, .btn-block;
   }
 
 }

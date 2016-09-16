@@ -1,6 +1,9 @@
 @import "base/variables";
 @import "vendor/bootstrap";
 
+@import "components/navbar";
+@import "components/brand";
+@import "components/login-menu";
 @import "components/login-form";
 
 body {
