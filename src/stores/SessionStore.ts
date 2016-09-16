@@ -17,12 +17,12 @@ export default class SessionStore {
     this.appStore = appStore
   }
 
-  @action setUsername(username: string): void {
+  @action setUsername = (username: string): void => {
     this.validateUsername(username)
     this.username = username
   }
 
-  @action validateUsername(username: string): void {
+  @action validateUsername = (username: string): void => {
     if (username.length < 3)
       this.errors.set("username", t("error.too_short", {min: 3}))
     else if (username.length > 100)
@@ -33,12 +33,12 @@ export default class SessionStore {
       this.errors.delete("username")
   }
 
-  @action setPassword(password: string): void {
+  @action setPassword = (password: string): void => {
     this.validatePassword(password)
     this.password = password
   }
 
-  @action validatePassword(password: string): void {
+  @action validatePassword = (password: string): void => {
     if (password.length < 4)
       this.errors.set("password", t("error.too_short", {min: 4}))
     else if (password.length > 100)
@@ -47,11 +47,11 @@ export default class SessionStore {
       this.errors.delete("password")
   }
 
-  errorFor(key: string): string | null {
+  errorFor = (key: string): string | null => {
     return this.errors.has(key) ? this.errors.get(key) : null
   }
 
-  @action login(): void {
+  @action login = (): void => {
     if (this.username === "jim" && this.password === "pass") {
       this.appStore.setCurrentUser(User.create(({
         "id": 16,

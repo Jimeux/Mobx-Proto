@@ -8,7 +8,9 @@ new WebpackDevServer(webpack(config), {
   publicPath: "/public/",
   colors: true,
   stats: "minimal",
-  historyApiFallback: true
+  historyApiFallback: {
+    index: 'public/index.html'
+  }
 }).listen(8000, "localhost", (err, result) => {
   if (err)
     console.error(err)

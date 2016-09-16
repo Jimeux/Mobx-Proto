@@ -17,7 +17,7 @@ export default class UserStore {
     this.userService = userService
   }
 
-  async fetchUser(id: number): Promise<void> {
+  fetchUser = async(id: number): Promise<void> => {
     const user = await this.userService.get(id)
     this.receiveUser(user)
   }
@@ -25,7 +25,7 @@ export default class UserStore {
   @action receiveUser = (user: User) =>
     this.user = user
 
-  async fetchUsers(page: number = 1): Promise<void> {
+  fetchUsers = async(page: number = 1): Promise<void> => {
     try {
       const users = await this.userService.index(page)
 

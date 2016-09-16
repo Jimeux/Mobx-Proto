@@ -13,7 +13,7 @@ describe("UserService", () => {
 
     it("returns a User instance on success", async() => {
       const userJson = factory.user
-      fetchMock.get("*", userJson)
+      fetchMock.mock("*", userJson)
 
       const userService = new UserService()
       const user = await userService.get(1)

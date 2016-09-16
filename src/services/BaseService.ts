@@ -9,7 +9,7 @@ abstract class BaseService {
     this.basePath = `${BaseService.endpoint}/${basePath}`
   }
 
-  async getRequest(path: string): Promise<any> {
+  getRequest = async(path: string): Promise<any> => {
     const response = await fetch(`${this.basePath}/${path}`)
 
     if (response.ok) {

@@ -4,4 +4,6 @@ npm-debug.log
 tmp
 .idea
 *.iml
-public
+
+public/*
+!public/index.html

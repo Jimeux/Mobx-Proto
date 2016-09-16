@@ -10,17 +10,21 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "removeComments": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
     "noLib": false,
     "skipLibCheck": true,
     "jsx": "react",
     "strictNullChecks": true,
-    "baseUrl": "."
+    "baseUrl": "src",
+    "types" : [
+      "chai-enzyme",
+      "mocha",
+      "whatwg-fetch"
+    ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "typings/index.d.ts"
+    "src/**/*.tsx?"
   ],
   "exclude": [
     "node_modules",
