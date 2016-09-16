@@ -5,6 +5,8 @@ import i18n from "../i18n/i18n"
 
 export default class AppStore {
 
+  public static readonly Name: string = "appStore"
+
   @observable locale: string = i18n.language
   @observable currentUser: User | null = null
   @observable error: string | null = null

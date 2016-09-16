@@ -8,7 +8,7 @@ interface LoginFormProps {
   sessionStore: SessionStore
 }
 
-@observer(["sessionStore"])
+@observer([SessionStore.Name])
 export default class LoginForm extends Component<LoginFormProps, {}> {
   render() {
     const store = this.props.sessionStore

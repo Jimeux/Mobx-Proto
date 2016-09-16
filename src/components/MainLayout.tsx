@@ -9,7 +9,7 @@ interface MainLayoutProps {
   appStore: AppStore
 }
 
-@observer(["appStore"])
+@observer([AppStore.Name])
 export default class MainLayout extends Component<MainLayoutProps, {}> {
   render() {
     const {currentUser, locale, switchLocale, error} = this.props.appStore

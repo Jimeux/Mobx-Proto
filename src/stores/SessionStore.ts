@@ -6,6 +6,8 @@ import {UserJson} from "../models/User"
 
 export default class SessionStore {
 
+  public static readonly Name: string = "sessionStore"
+
   @observable errors = new ObservableMap<string>()
   @observable failed: boolean = false
   @observable username: string = ""

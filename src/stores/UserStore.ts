@@ -6,6 +6,8 @@ import {t} from "../i18n/i18n"
 
 export default class UserStore {
 
+  public static readonly Name: string = "userStore"
+
   @observable users: Array<User> = []
   @observable user: User | null = null
 

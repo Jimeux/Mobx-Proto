@@ -9,7 +9,7 @@ interface UserListProps {
   userStore: UserStore,
 }
 
-@observer(["userStore"])
+@observer([UserStore.Name])
 export default class UserList extends Component<UserListProps, {}> {
 
   render() {
