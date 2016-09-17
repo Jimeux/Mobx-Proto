@@ -16,29 +16,35 @@ export default class LoginForm extends Component<LoginFormProps, {}> {
     return (
       <div className="login-form">
 
-        {store.failed ? <h4>{t("login.error")}</h4> : null}
+        <div className="header">
+          <span className="secondary">APPLIV</span><span>CLOUD</span>
+        </div>
 
-        <Input type="text"
-               label={t("login.username")}
-               error={store.errorFor("username")}
-               onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
+        <div className="body">
+          <Field type="text"
+                 label={t("login.username")}
+                 error={store.errorFor("username")}
+                 onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
 
-        <Input type="password"
-               label={t("login.password")}
-               error={store.errorFor("password")}
-               onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
+          <Field type="password"
+                 label={t("login.password")}
+                 error={store.errorFor("password")}
+                 onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
 
-        <button onClick={() => store.login()}>
-          {t("login.submit")}
-        </button>
+          <div className="submit">
+            <button onClick={() => store.login()} disabled={!store.isValid()}>
+              {t("login.submit")}
+            </button>
+          </div>
+        </div>
 
       </div>
     )
   }
 }
 
-const Input = ({type, label, error, onChange}) =>
-  <div>
+const Field = ({type, label, error, onChange}) =>
+  <div className={`field ${error ? "error" : ""}`}>
     <label>{label}{error}</label>
     <input type={type} onChange={onChange}/>
   </div>

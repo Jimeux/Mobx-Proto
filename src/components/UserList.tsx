@@ -13,12 +13,15 @@ interface UserListProps {
 export default class UserList extends Component<UserListProps, {}> {
 
   render() {
-    return (
+    const store = this.props.userStore
+    const users = store.getUsers().map(this.renderUser)
+    const userList =
       <div>
         <h4>{t("users.title")}</h4>
-        {this.props.userStore.getUsers().map(this.renderUser)}
+        {users}
       </div>
-    )
+
+    return store.loading ? <Loader /> : userList
   }
 
   renderUser = (user: User) =>
@@ -33,4 +36,11 @@ const UserItem = ({user, onClick, active}) =>
   <div onClick={onClick}>
     <span>{user.name}</span>
     {active ? <span>&nbsp;{user.department}</span> : null}
+  </div>
+
+const Loader = () =>
+  <div className="loader">
+    <div className="img-wrapper">
+      <img src="public/images/loader.svg"/>
+    </div>
   </div>

@@ -1,14 +1,18 @@
 @import "../base/variables";
 
 .brand {
-  display: inline-block;
 
-  a {
+  .menu-icon {
+    float: left;
+    padding: 18px 0 18px 18px;
     display: inline-block;
-    padding: 20px;
-    text-decoration: none;
+    cursor: pointer;
   }
 
-  a:hover {
+  .brand-text {
+    float: left;
+    display: inline-block;
+    padding: 21px 18px;
+    text-decoration: none;
   }
 }

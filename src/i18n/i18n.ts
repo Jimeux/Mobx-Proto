@@ -15,7 +15,7 @@ const en = {
     "login": {
       "username": "Username",
       "password": "Password",
-      "submit": "Login",
+      "submit": "LOGIN",
       "error": "Invalid username or password"
     },
 
@@ -26,6 +26,10 @@ const en = {
 
     "site": {
       "not_found": "Nicht Gefounden"
+    },
+
+    "snackbar": {
+      "dismiss": "DISMISS"
     },
 
     "error": {
@@ -59,10 +63,14 @@ const ja = {
       "not_found": "ニクト・ゲファウンデン"
     },
 
+    "snackbar": {
+      "dismiss": "非表示"
+    },
+
     "error": {
-      "too_short": "は{{min}}以上の値にしてください",
-      "too_long": "は{{max}}以下の値にしてください",
-      "alpha_num": "は半角英数字文字または-_のみを入力してください"
+      "too_short": "は{{min}}文字以上の値にしてください",
+      "too_long": "は{{max}}文字以下の値にしてください",
+      "alpha_num": "は半角英数字文 字または-_のみを入力してください"
     }
   }
 }

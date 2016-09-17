@@ -1,9 +1,10 @@
 import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
-import {Link} from "react-router"
-import {t} from "../i18n/i18n"
 import AppStore from "../stores/AppStore"
+import Menu from "../components/Menu"
+import Navbar from "../components/Navbar"
+import Snackbar from "../components/Snackbar"
 
 interface MainLayoutProps {
   appStore: AppStore
@@ -12,33 +13,16 @@ interface MainLayoutProps {
 @observer([AppStore.Name])
 export default class MainLayout extends Component<MainLayoutProps, {}> {
   render() {
-    const {currentUser, locale, switchLocale, error} = this.props.appStore
+    const {locale, notice, clearNotice} = this.props.appStore
+    const {menuIsOpen, closeMenu, currentUser} = this.props.appStore
+
     return (
       <div className="main-layout" key={locale}>
-        <Navbar user={currentUser} locale={locale} switchLocale={switchLocale}/>
-        {error ? <ErrorNotice error={error}/> : null}
+        <Menu menuIsOpen={menuIsOpen} closeMenu={closeMenu}/>
+        {currentUser ? <Navbar appStore={this.props.appStore}/> : null}
         <main>{this.props.children}</main>
+        <Snackbar notice={notice} clearNotice={clearNotice}/>
       </div>
     )
   }
 }
-
-const ErrorNotice = ({error}) =>
-  <div>{error}</div>
-
-const Brand = () =>
-  <div className="brand">
-    <Link to="/">{t("nav.brand")}</Link>
-  </div>
-
-const LoginMenu = ({currentUser, locale, switchLocale}) =>
-  <div className="login-menu">
-    {currentUser ? t("nav.message", {name: currentUser.name}) : null}&nbsp;
-    <button onClick={() => switchLocale()}>{locale}</button>
-  </div>
-
-const Navbar = (props) =>
-  <nav>
-    <Brand/>
-    <LoginMenu {...props}/>
-  </nav>

@@ -32,15 +32,17 @@ $elevation-8dp: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
 0 3px 14px 2px rgba(0, 0, 0, 0.2),
 0 5px 5px -3px rgba(0, 0, 0, 0.12);
 
-$brand-primary: $color500;
+$brand-primary: $color400;
 
-$btn-primary-bg: $color500;
+$btn-primary-bg: $color400;
 
-$brand-danger: $colorRed500;
-$brand-info: $colorLightBlue500;
+$btn-primary-border: $color400;
+
+$brand-danger: $colorRed400;
+$brand-info: $colorLightBlue400;
 $state-danger-text: $colorRed700;
 $state-danger-bg: $colorRed500;
-$input-border-focus: $colorBlue500;
+$input-border-focus: $colorBlue400;
 $font-family-base: 500 15px/20px "museo-sans-rounded",sans-serif;
 
 $border-radius-base: 2px;

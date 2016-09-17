@@ -10,6 +10,7 @@ export default class UserStore {
 
   @observable users: Array<User> = []
   @observable user: User | null = null
+  @observable loading: boolean = false
 
   private appStore: AppStore
   private userService: UserService
@@ -18,6 +19,9 @@ export default class UserStore {
     this.appStore = appStore
     this.userService = userService
   }
+
+  @action setLoading = (loading: boolean) =>
+    this.loading = loading
 
   fetchUser = async(id: number): Promise<void> => {
     const user = await this.userService.get(id)
@@ -29,19 +33,22 @@ export default class UserStore {
 
   fetchUsers = async(page: number = 1): Promise<void> => {
     try {
+      this.setLoading(true)
       const users = await this.userService.index(page)
 
       if (users === null)
-        this.appStore.setError(t("users.error"))
+        this.appStore.setNotice(t("users.notice"))
       else
-        this.receiveUsers(users)
+        setTimeout(() => this.receiveUsers(users), 2000)
     } catch (error) {
-      this.appStore.setError(error.toString())
+      this.appStore.setNotice(error.toString())
     }
   }
 
-  @action receiveUsers = (users: Array<User>) =>
+  @action receiveUsers = (users: Array<User>) => {
+    this.setLoading(false)
     this.users = users
+  }
 
   getUsers = (): Array<User> => {
     if (this.users.length === 0)

@@ -2,6 +2,7 @@ import {observable, action, computed} from "mobx"
 import User from "../models/User"
 import History from "react-router/lib/History"
 import i18n from "../i18n/i18n"
+import {t} from "../i18n/i18n";
 
 export default class AppStore {
 
@@ -9,9 +10,11 @@ export default class AppStore {
 
   @observable locale: string = i18n.language
   @observable currentUser: User | null = null
-  @observable error: string | null = null
+  @observable notice: string | null = null
+  @observable menuIsOpen: boolean = false
 
   private history: History
+  private clearNoticeTimeout: number
 
   constructor(history: History) {
     this.history = history
@@ -29,8 +32,20 @@ export default class AppStore {
   @action setCurrentUser = (user: User) =>
     this.currentUser = user
 
-  @action setError = (message: string) =>
-    this.error = message
+  @action setNotice = (notice: string) => {
+    this.notice = notice
+    clearTimeout(this.clearNoticeTimeout)
+    this.clearNoticeTimeout = setTimeout(this.clearNotice, 5000)
+  }
+
+  @action clearNotice = () =>
+    this.notice = null
+
+  @action openMenu = () =>
+    this.menuIsOpen = true
+
+  @action closeMenu = () =>
+    this.menuIsOpen = false
 
   @computed get isAuthenticated(): boolean {
     return this.currentUser !== null

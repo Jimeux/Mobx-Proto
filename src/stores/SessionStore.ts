@@ -28,7 +28,7 @@ export default class SessionStore {
     if (username.length < 3)
       this.errors.set("username", t("error.too_short", {min: 3}))
     else if (username.length > 100)
-      this.errors.set("username", t("error.too_short", {max: 100}))
+      this.errors.set("username", t("error.too_long", {max: 100}))
     else if (!(!!username.match(/^[_\-\w]+$/)))
       this.errors.set("username", t("error.alpha_num"))
     else
@@ -44,7 +44,7 @@ export default class SessionStore {
     if (password.length < 4)
       this.errors.set("password", t("error.too_short", {min: 4}))
     else if (password.length > 100)
-      this.errors.set("password", t("error.too_short", {max: 100}))
+      this.errors.set("password", t("error.too_long", {max: 100}))
     else
       this.errors.delete("password")
   }
@@ -52,6 +52,9 @@ export default class SessionStore {
   errorFor = (key: string): string | null => {
     return this.errors.has(key) ? this.errors.get(key) : null
   }
+
+  isValid = () => this.errors.size === 0 &&
+    this.username != null && this.password.length > 0 && this.username.length > 0
 
   @action login = (): void => {
     if (this.username === "jim" && this.password === "pass") {
@@ -66,6 +69,7 @@ export default class SessionStore {
       this.failed = false
     } else {
       this.failed = true
+      this.appStore.setNotice(t("login.error"))
     }
   }
 
