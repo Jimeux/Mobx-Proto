@@ -7,9 +7,10 @@ new WebpackDevServer(webpack(config), {
   contentBase: path.join(__dirname),
   publicPath: "/public/",
   colors: true,
+  hot: true,
   stats: "minimal",
   historyApiFallback: {
-    index: 'public/index.html'
+    index: "public/index.html"
   }
 }).listen(8000, "localhost", (err, result) => {
   if (err)
