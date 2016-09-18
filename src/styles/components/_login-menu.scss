@@ -1,5 +1,44 @@
+@import "../base/variables";
+
 .login-menu {
   display: inline-block;
   float: right;
-  padding: 14px 20px;
+  padding: 3px 20px;
+
+  ul {
+    -webkit-box-shadow: $elevation-2dp;
+    box-shadow: $elevation-2dp;
+    border: 0 !important;
+  }
+
+  button {
+    background: none;
+    border: none;
+
+    img {
+      @extend .img-circle;
+      width: 35px;
+      transition: all 200ms ease-out;
+      opacity: 0.9;
+    }
+  }
+
+  .btn-group.open .dropdown-toggle {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .btn-default:focus, .btn-default.active, .open > .btn-default.dropdown-toggle {
+    background: none;
+  }
+
+  button:hover {
+    background: none;
+
+    img {
+      //margin: -2px -2px;
+      //width: 40px;
+      opacity: 1;
+    }
+  }
 }

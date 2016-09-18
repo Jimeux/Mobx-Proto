@@ -66,6 +66,10 @@
       @extend .btn, .btn-primary;
       margin-top: 10px;
       padding: 8px 15px;
+      transition: all 200ms ease-in;
+    }
+    button:hover {
+      box-shadow: $elevation-2dp;
     }
   }
 

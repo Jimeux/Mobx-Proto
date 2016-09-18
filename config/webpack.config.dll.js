@@ -13,6 +13,7 @@ module.exports = {
       "mobx-react",
       "react",
       "react-addons-css-transition-group",
+      "react-bootstrap",
       "react-dom",
       "react-router"
     ]

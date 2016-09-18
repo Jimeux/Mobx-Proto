@@ -93,8 +93,7 @@ const TicketFooter = ({page, pageUp, pageDown}) =>
       <span className="page-icon" onClick={pageDown}>
         <i className="material-icons">chevron_left</i>
       </span>
-      <span className="count-info">1-10 of 100</span>
-      <span className="rows-per-page">Rows per page: 10</span>
+      <span className="count-info">{page * 10 - 10 + 1}-{page * 10} of 100</span>
     </td>
   </tr>
   </tfoot>

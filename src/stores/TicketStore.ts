@@ -36,7 +36,7 @@ export default class TicketStore {
       if (tickets === null)
         this.appStore.setNotice(t("tickets.notice"))
       else
-        setTimeout(() => this.receiveTickets(tickets), 200)
+        setTimeout(() => this.receiveTickets(tickets), 0)
     } catch (error) {
       this.appStore.setNotice(error.toString())
     }
