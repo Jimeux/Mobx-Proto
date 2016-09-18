@@ -1,7 +1,52 @@
 @import "../base/variables";
 
 nav {
-  height: 60px;
-  background: white;
   box-shadow: $elevation-2dp;
+}
+
+nav .title-bar {
+  height: 54px;
+  background: $color400;
+}
+
+nav .tabs {
+  clear: both;
+  height: 40px;
+  background: $color500;
+
+  span {
+    color: $color100;
+    text-transform: uppercase;
+    height: 40px;
+    padding: 12px 15px;
+    margin: 0 10px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 90%;
+    transition: background-color 200ms ease-in-out;
+  }
+
+  span:hover {
+    color: white;
+  }
+
+  .active {
+    box-shadow: 0px -2px 0px white inset;
+    cursor: auto;
+    color: white;
+  }
+  .active:hover {
+    background: $color500;
+  }
+}
+
+/* Transitions */
+
+.navbar-enter {
+  transform: translateY(-100%);
+}
+
+.navbar-enter.navbar-enter-active {
+  transform: none;
+  transition: transform 300ms ease-in-out;
 }

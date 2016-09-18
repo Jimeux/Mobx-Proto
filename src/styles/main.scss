@@ -8,11 +8,14 @@
 @import "components/loader";
 @import "components/login-menu";
 
+@import "components/ticket-table";
+
 @import "components/login-form";
 
 body {
   background: $colorGrey100;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto';
 }
 
 button {

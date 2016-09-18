@@ -13,10 +13,19 @@ export default class Navbar extends Component<NavbarProps, {}> {
     const {currentUser, switchLocale, locale, openMenu} = this.props.appStore
 
     return (
-      <nav>
-        <Brand openMenu={openMenu} currentUser={currentUser}/>
-        <LoginMenu currentUser={currentUser} switchLocale={switchLocale} locale={locale}/>
-      </nav>
+      <div>
+        <nav>
+          <div className="title-bar">
+            <Brand openMenu={openMenu} currentUser={currentUser}/>
+            <LoginMenu currentUser={currentUser} switchLocale={switchLocale} locale={locale}/>
+          </div>
+          <div className="tabs">
+            <span className="active">Tickets</span>
+            <span>Articles</span>
+            <span>Account</span>
+          </div>
+        </nav>
+      </div>
     )
   }
 }

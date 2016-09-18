@@ -1,9 +1,9 @@
 import {expect} from "chai"
 import * as fetchMock from "fetch-mock"
-import UserService from "../../src/services/UserService"
+import UserService from "../../src/services/TicketService"
 import factory from "../support/factory"
 
-describe("UserService", () => {
+describe("TicketService", () => {
 
   afterEach(() => {
     fetchMock.restore()

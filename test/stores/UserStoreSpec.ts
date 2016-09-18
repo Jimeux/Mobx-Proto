@@ -1,12 +1,12 @@
 import {expect} from "chai"
 import factory from "../support/factory"
 import {Mock} from "typemoq"
-import UserStore from "../../src/stores/UserStore"
-import UserService from "../../src/services/UserService"
-import User from "../../src/models/User"
+import UserStore from "../../src/stores/TicketStore"
+import UserService from "../../src/services/TicketService"
+import User from "../../src/models/Ticket"
 import AppStore from "../../src/stores/AppStore"
 
-describe("UserStore", () => {
+describe("TicketStore", () => {
 
   let mockAppStore: Mock<AppStore>
   let mockUserService: Mock<UserService>
@@ -38,9 +38,9 @@ describe("UserStore", () => {
       mockUserService.setup(_ => _.index(1))
         .returns(() => Promise.resolve(users))
 
-      await userStore.fetchUsers(1)
+      await userStore.fetchTickets(1)
       //http://stackoverflow.com/questions/35929369/mobx-observable-array-does-not-display-correctly
-      expect(userStore.users.slice()).to.eql(users)
+      expect(userStore.tickets.slice()).to.eql(users)
     })
 
   })

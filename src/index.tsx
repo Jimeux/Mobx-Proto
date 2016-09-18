@@ -5,12 +5,12 @@ import {Provider} from "mobx-react"
 import DevTools from "mobx-react-devtools"
 import {Router, Route, browserHistory} from "react-router"
 
-import UserService from "./services/UserService"
+import TicketService from "./services/TicketService"
 import AppStore from "./stores/AppStore"
 import SessionStore from "./stores/SessionStore"
-import App from "./components/UserList"
+import App from "./components/TicketList"
 import LoginForm from "./components/LoginForm"
-import UserStore from "./stores/UserStore"
+import TicketStore from "./stores/TicketStore"
 import NotFound from "./components/NotFound"
 import MainLayout from "./components/MainLayout"
 
@@ -20,9 +20,9 @@ useStrict(true)
 
 const appStore = new AppStore(browserHistory)
 const sessionStore = new SessionStore(appStore)
-const userStore = new UserStore(appStore, new UserService())
+const ticketStore = new TicketStore(appStore, new TicketService())
 
-const stores = {appStore, sessionStore, userStore}
+const stores = {appStore, sessionStore, ticketStore}
 
 const authRequired = (nextState: Object, replace: Function) => {
   if (!appStore.isAuthenticated)
@@ -34,7 +34,7 @@ const root = document.getElementById("root")
 if (root !== null) {
   render(
     <div>
-      <DevTools/>
+      {/*<DevTools/>*/}
 
       <Provider {...stores}>
         <Router history={browserHistory}>

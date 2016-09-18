@@ -1,6 +1,6 @@
 import {expect} from "chai"
 import factory from "../support/factory"
-import User from "../../src/models/User"
+import User from "../../src/models/Ticket"
 
 describe("User", () => {
 

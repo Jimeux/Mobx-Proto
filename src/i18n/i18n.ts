@@ -20,7 +20,7 @@ const en = {
     },
 
     "users": {
-      "error": "Unable to retrieve users.",
+      "error": "Unable to retrieve tickets.",
       "title": "Users"
     },
 
@@ -29,7 +29,7 @@ const en = {
     },
 
     "snackbar": {
-      "dismiss": "DISMISS"
+      "dismiss": "Dismiss"
     },
 
     "error": {

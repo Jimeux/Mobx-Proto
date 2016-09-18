@@ -1,8 +1,7 @@
 import {observable, action, computed} from "mobx"
 import User from "../models/User"
 import History from "react-router/lib/History"
-import i18n from "../i18n/i18n"
-import {t} from "../i18n/i18n";
+import i18n, {t} from "../i18n/i18n"
 
 export default class AppStore {
 
