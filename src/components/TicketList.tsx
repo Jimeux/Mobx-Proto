@@ -16,24 +16,31 @@ export default class TicketList extends Component<TicketListProps, {}> {
     const tickets = getTickets().map(ticket =>
       <TicketRow key={`ticket-${ticket.id}`} ticket={ticket}/>)
 
+    const actionMenu =
+      <div className="action-menu">
+        <div className="sections">
+          <span className="active">Nominated</span>
+          <span>Open</span>
+        </div>
+        <div className="actions">
+          <i className="material-icons">search</i>
+          <i className="material-icons">filter_list</i>
+          <i className="material-icons">refresh</i>
+        </div>
+      </div>
+
     const ticketList =
-      <div className="ticket-table-wrapper">
-        <div className="ticket-table">
-          <div className="title-bar">
-            <div className="title">
-              <span>Open Tickets</span>
-            </div>
-            <div className="actions">
-              <i className="material-icons">search</i>
-              <i className="material-icons">filter_list</i>
-              <i className="material-icons">refresh</i>
-            </div>
+      <div>
+        {actionMenu}
+
+        <div className="ticket-table-wrapper">
+          <div className="ticket-table">
+            <table>
+              <TicketHeader/>
+              <tbody>{tickets}</tbody>
+              <TicketFooter pageUp={pageUp} pageDown={pageDown} page={page}/>
+            </table>
           </div>
-          <table>
-            <TicketHeader/>
-            <tbody>{tickets}</tbody>
-            <TicketFooter pageUp={pageUp} pageDown={pageDown} page={page}/>
-          </table>
         </div>
       </div>
 

@@ -1,43 +1,122 @@
 @import "../base/variables";
 
 nav {
-  box-shadow: $elevation-2dp;
+  //box-shadow: $elevation-2dp;
 }
 
-nav .title-bar {
-  height: 54px;
-  background: $color400;
-}
-
-nav .tabs {
-  clear: both;
-  height: 40px;
+.nav-title-bar {
+  height: 50px;
   background: $color500;
+}
 
-  span {
+.nav-tabs {
+  display: inline-block;
+  margin-left: 20px;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
     color: $color100;
     text-transform: uppercase;
-    height: 40px;
-    padding: 12px 15px;
+    padding: 17px 15px 16px;
     margin: 0 10px;
-    display: inline-block;
     cursor: pointer;
     font-size: 90%;
-    transition: background-color 200ms ease-in-out;
+    transition: color 200ms ease-in-out;
   }
 
-  span:hover {
+  a:hover {
     color: white;
   }
 
   .active {
-    box-shadow: 0px -2px 0px white inset;
     cursor: auto;
     color: white;
+    background: $color400;
   }
   .active:hover {
-    background: $color500;
+
   }
+}
+
+.brand {
+  .menu-icon {
+    color: white;
+    float: left;
+    padding: 16px 0 0 18px;
+    display: inline-block;
+    cursor: pointer;
+    i {
+      font-size: 20px;
+    }
+  }
+
+  .brand-text {
+    color: white;
+    float: left;
+    display: inline-block;
+    padding: 16px 18px 0;
+    text-decoration: none;
+    font-size: 15px;
+  }
+}
+
+.action-menu {
+  height: 50px;
+  padding: 0 15px;
+  background: $color400;
+  //box-shadow: $elevation-2dp;
+
+  .sections {
+    @extend .pull-left;
+    span {
+      margin-right: 5px;
+      color: $color100;
+      display: inline-block;
+      padding: 16px 20px 15px;
+    }
+  }
+
+  .breadcrumbs {
+    @extend .pull-left;
+    color: white;
+    font-size: 105%;
+
+    span, i {
+      @extend .pull-left;
+    }
+    span {
+      padding: 14px 15px;
+      display: inline-block;
+    }
+    .separator {
+      padding: 12px 5px;
+    }
+  }
+
+  .actions {
+    @extend .pull-right;
+    padding-right: 10px;
+
+    i {
+      color: white;
+      padding: 14px 15px;
+      font-size: 145%;
+    }
+  }
+
+  .sections .active {
+    color: white;
+    box-shadow: 0px -2px 0px white inset;
+  }
+}
+
+.action-menu.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  box-shadow: $elevation-2dp;
 }
 
 /* Transitions */

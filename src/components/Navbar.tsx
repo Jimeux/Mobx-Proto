@@ -16,14 +16,14 @@ export default class Navbar extends Component<NavbarProps, {}> {
     return (
       <div>
         <nav>
-          <div className="title-bar">
+          <div className="nav-title-bar">
             <Brand openMenu={openMenu} currentUser={currentUser}/>
+            <div className="nav-tabs">
+              <Link activeClassName="" to="/">Home</Link>
+              <Link activeClassName="active" to="/">Tickets</Link>
+              <Link activeClassName="active" to="/articles/create">Articles</Link>
+            </div>
             <LoginMenu currentUser={currentUser} switchLocale={switchLocale} locale={locale}/>
-          </div>
-          <div className="tabs">
-            <span className="active">Tickets</span>
-            <span>Articles</span>
-            <span>Account</span>
           </div>
         </nav>
       </div>

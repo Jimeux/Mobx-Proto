@@ -21,15 +21,15 @@ export default class LoginForm extends Component<LoginFormProps, {}> {
         </div>
 
         <div className="body">
-          <Field type="text"
-                 label={t("login.username")}
-                 error={store.errorFor("username")}
-                 onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
+          <TextField type="text"
+                     label={t("login.username")}
+                     error={store.errorFor("username")}
+                     onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
 
-          <Field type="password"
-                 label={t("login.password")}
-                 error={store.errorFor("password")}
-                 onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
+          <TextField type="password"
+                     label={t("login.password")}
+                     error={store.errorFor("password")}
+                     onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
 
           <div className="submit">
             <button onClick={() => store.login()} disabled={!store.isValid()}>
@@ -43,8 +43,8 @@ export default class LoginForm extends Component<LoginFormProps, {}> {
   }
 }
 
-const Field = ({type, label, error, onChange}) =>
-  <div className={`field ${error ? "error" : ""}`}>
+const TextField = ({type, label, error, onChange}) =>
+  <div className={`text-field ${error ? "error" : ""}`}>
     <label>{label}{error}</label>
     <input type={type} onChange={onChange}/>
   </div>

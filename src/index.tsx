@@ -8,13 +8,15 @@ import {Router, Route, browserHistory} from "react-router"
 import TicketService from "./services/TicketService"
 import AppStore from "./stores/AppStore"
 import SessionStore from "./stores/SessionStore"
-import App from "./components/TicketList"
+import TicketList from "./components/TicketList"
 import LoginForm from "./components/LoginForm"
+import ArticleForm from "./components/ArticleForm"
 import TicketStore from "./stores/TicketStore"
 import NotFound from "./components/NotFound"
 import MainLayout from "./components/MainLayout"
 
 import "./styles/main.scss"
+import {UserJson, default as User} from "./models/User";
 
 useStrict(true)
 
@@ -39,7 +41,8 @@ if (root !== null) {
       <Provider {...stores}>
         <Router history={browserHistory}>
           <Route component={MainLayout}>
-            <Route path="/" component={App} onEnter={authRequired}/>
+            <Route path="/" component={TicketList} onEnter={authRequired}/>
+            <Route path="/articles/create" component={ArticleForm} onEnter={authRequired}/>
             <Route path="/login" component={LoginForm}/>
             <Route path="*" component={NotFound}/>
           </Route>

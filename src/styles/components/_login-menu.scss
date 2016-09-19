@@ -3,7 +3,7 @@
 .login-menu {
   display: inline-block;
   float: right;
-  padding: 3px 20px;
+  padding: 1px 20px;
 
   ul {
     -webkit-box-shadow: $elevation-2dp;
@@ -17,7 +17,7 @@
 
     img {
       @extend .img-circle;
-      width: 35px;
+      width: 34px;
       transition: all 200ms ease-out;
       opacity: 0.9;
     }

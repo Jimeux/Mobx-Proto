@@ -2,47 +2,13 @@
 
 .login-form {
   background: white;
-  box-shadow: $elevation-2dp;
+  box-shadow: $elevation-4dp;
   border-radius: 2px;
   max-width: 400px;
-  margin: 100px auto;
-
-  .field {
-    @extend .form-group;
-
-    label {
-      @extend .control-label;
-      margin-top: 15px;
-      font-weight: 400;
-      color: $color400;
-    }
-
-    input {
-      @extend .form-control;
-      box-shadow: none;
-      padding: 5px 0;
-      border: none;
-      border-bottom: 1px solid $colorGrayLight;
-    }
-
-    input:focus{
-      border-color: $color300;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-    }
-  }
-
-  .field.error {
-    label {
-      color: $brand-danger;
-    }
-    input {
-      border-color: $brand-danger;
-    }
-  }
+  margin: 120px auto;
 
   .header {
-    background: $color400;
+    background: $color500;
     text-align: center;
     padding: 35px 24px;
     color: white;
@@ -50,7 +16,7 @@
     font-weight: 200;
 
     .secondary {
-      color: $color50;
+      color: $color100;
       font-weight: 400;
     }
   }

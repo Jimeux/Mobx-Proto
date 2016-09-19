@@ -1,0 +1,40 @@
+.text-field, .textarea-field {
+  @extend .form-group;
+
+  label {
+    @extend .control-label;
+    margin-top: 15px;
+    font-weight: 400;
+    color: $color500;
+  }
+
+  input {
+    @extend .form-control;
+    box-shadow: none;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid $colorGrey400;
+  }
+
+  input:focus, textarea:focus {
+    border-color: $color300;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  textarea {
+    @extend .form-control;
+    box-shadow: none;
+    padding: 12px;
+    border: 1px solid $colorGrayLight;
+  }
+}
+
+.text-field.error, .textarea-field.error {
+  label {
+    color: $brand-danger;
+  }
+  input {
+    border-color: $brand-danger;
+  }
+}
