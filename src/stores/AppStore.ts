@@ -2,7 +2,7 @@ import {observable, action, computed} from "mobx"
 import History from "react-router/lib/History"
 import {Deserialize} from "cerialize"
 import {i18n, t} from "../i18n/i18n"
-import {User} from "../models/User"
+import {User, UserRole} from "../models/User"
 
 export class AppStore {
 
@@ -24,6 +24,12 @@ export class AppStore {
   @action setPath = (path: string) =>
     this.history.replace(path)
 
+  @action redirectHome = () => {
+    const path = (this.currentUser == null) ?
+      "login" : this.currentUser.roleName
+    this.setPath(`/${path}`)
+  }
+
   @action switchLocale = () => {
     const next = this.locale === "ja" ? "en" : "ja"
     i18n.changeLanguage(next)
@@ -31,9 +37,10 @@ export class AppStore {
   }
 
   @action restoreUser = () => {
-    const userJson = localStorage.getItem("user")
-    if (userJson != null)
-      this.currentUser = Deserialize(userJson)
+    const userString = localStorage.getItem("user")
+    if (userString != null) {
+      this.currentUser = Deserialize(JSON.parse(userString))
+    }
   }
 
   @action setCurrentUser = (user: User) =>
@@ -54,8 +61,13 @@ export class AppStore {
   @action closeMenu = () =>
     this.menuIsOpen = false
 
-  @computed get isAuthenticated(): boolean {
-    return this.currentUser !== null
-  }
+  isAuthenticated = (): boolean =>
+    this.currentUser != null
+
+  isAuthorizedFor = (role: UserRole): boolean =>
+    this.currentUser != null && this.currentUser.role >= role
+
+  notAuthorizedFor = (role: UserRole): boolean =>
+    !(this.isAuthorizedFor(role))
 
 }

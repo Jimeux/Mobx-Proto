@@ -7,6 +7,7 @@ module.exports = {
 
   entry: {
     vendor: [
+      "cerialize",
       "i18next",
       "i18next-browser-languagedetector",
       "mobx",

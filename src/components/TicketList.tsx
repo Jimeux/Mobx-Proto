@@ -109,6 +109,6 @@ const TicketFooter = ({page, pageUp, pageDown}) =>
 const Loader = () =>
   <div className="loader">
     <div className="img-wrapper">
-      <img src="public/images/loader.svg"/>
+      <img src="/public/images/loader.svg"/>
     </div>
   </div>

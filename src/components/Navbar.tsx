@@ -23,8 +23,8 @@ export class Navbar extends Component<NavbarProps, {}> {
             <Brand openMenu={openMenu} currentUser={currentUser}/>
             <div className="nav-tabs">
               <Link activeClassName="" to="/">Home</Link>
-              <Link activeClassName="active" to="/">Tickets</Link>
-              <Link activeClassName="active" to="/articles/create">Articles</Link>
+              <Link activeClassName="active" to="/writer/tickets">Tickets</Link>
+              <Link activeClassName="active" to="/writer/articles/create">Articles</Link>
             </div>
             <LoginMenu currentUser={currentUser}
                        switchLocale={switchLocale}

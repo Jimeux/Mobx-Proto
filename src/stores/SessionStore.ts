@@ -60,13 +60,15 @@ export class SessionStore {
     if (this.username === "jim" && this.password === "pass") {
       this.appStore.setCurrentUser(Deserialize({
         "id": 16,
+        "role": 1,
         "avatar": "https://placehold.it/28x28",
         "department": "Development",
         "name": "Jim",
         "namae": "ジム"
       }, User))
-      localStorage.setItem("user", Serialize(this.appStore.currentUser))
-      this.appStore.setPath("/")
+      const userString = JSON.stringify(Serialize(this.appStore.currentUser))
+      localStorage.setItem("user", userString)
+      this.appStore.redirectHome()
       this.failed = false
     } else {
       this.failed = true
