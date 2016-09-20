@@ -2,11 +2,11 @@ import * as React from "react"
 import {Component} from "react"
 import * as Transition from "react-addons-css-transition-group"
 import {observer} from "mobx-react"
-import AppStore from "../stores/AppStore"
-import Menu from "../components/Menu"
-import Navbar from "../components/Navbar"
-import Snackbar from "../components/Snackbar"
-import SessionStore from "../stores/SessionStore"
+import {AppStore} from "../stores/AppStore"
+import {Menu} from "../components/Menu"
+import {Navbar} from "../components/Navbar"
+import {Snackbar} from "../components/Snackbar"
+import {SessionStore} from "../stores/SessionStore"
 
 interface MainLayoutProps {
   readonly appStore: AppStore
@@ -14,7 +14,7 @@ interface MainLayoutProps {
 }
 
 @observer([AppStore.Name, SessionStore.Name])
-export default class MainLayout extends Component<MainLayoutProps, {}> {
+export class MainLayout extends Component<MainLayoutProps, {}> {
   render() {
     const {appStore, sessionStore} = this.props
     const {locale, notice, clearNotice} = this.props.appStore

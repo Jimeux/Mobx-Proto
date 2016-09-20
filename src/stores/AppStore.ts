@@ -1,10 +1,10 @@
 import {observable, action, computed} from "mobx"
-import User from "../models/User"
 import History from "react-router/lib/History"
-import i18n, {t} from "../i18n/i18n"
-import {Deserialize} from "cerialize";
+import {Deserialize} from "cerialize"
+import {i18n, t} from "../i18n/i18n"
+import {User} from "../models/User"
 
-export default class AppStore {
+export class AppStore {
 
   public static readonly Name: string = "appStore"
 

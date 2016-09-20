@@ -1,6 +1,6 @@
 import {serialize} from "cerialize"
 
-export default class User {
+export class User {
   @serialize readonly id: number
   @serialize readonly email: string
   @serialize readonly name: string

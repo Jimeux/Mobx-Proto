@@ -1,10 +1,10 @@
-import {observable, action, reaction, runInAction} from "mobx"
-import AppStore from "./AppStore"
-import TicketService from "../services/TicketService"
-import Ticket from "../models/Ticket"
+import {observable, action} from "mobx"
+import {AppStore} from "./AppStore"
+import {TicketService} from "../services/TicketService"
+import {Ticket} from "../models/Ticket"
 import {t} from "../i18n/i18n"
 
-export default class TicketStore {
+export class TicketStore {
 
   public static readonly Name: string = "ticketStore"
 

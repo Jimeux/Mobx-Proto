@@ -8,7 +8,7 @@ interface SnackBarProps {
   clearNotice: Function,
 }
 
-export default class SnackBar extends Component<SnackBarProps, {}> {
+export class Snackbar extends Component<SnackBarProps, {}> {
   render() {
     const {notice, clearNotice} = this.props
 

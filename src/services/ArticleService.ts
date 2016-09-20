@@ -1,7 +1,6 @@
-import BaseService from "./BaseService"
-import Ticket from "../models/Ticket"
+import {BaseService} from "./BaseService"
 
-export default class ArticleService extends BaseService {
+export class ArticleService extends BaseService {
 
   constructor() {
     super("articles")

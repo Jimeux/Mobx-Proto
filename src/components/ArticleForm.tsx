@@ -1,7 +1,7 @@
 import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
-import SessionStore from "../stores/SessionStore"
+import {SessionStore} from "../stores/SessionStore"
 import {t} from "../i18n/i18n"
 
 interface ArticleFormProps {
@@ -13,7 +13,7 @@ interface ArticleFormState {
 }
 
 @observer([SessionStore.Name])
-export default class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
+export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
 
   constructor(props: ArticleFormProps) {
     super(props)

@@ -1,10 +1,10 @@
 import {observable, action, ObservableMap} from "mobx"
 import {t} from "../i18n/i18n"
-import AppStore from "./AppStore"
-import User from "../models/User"
-import {Deserialize, Serialize} from "cerialize";
+import {AppStore} from "./AppStore"
+import {User} from "../models/User"
+import {Deserialize, Serialize} from "cerialize"
 
-export default class SessionStore {
+export class SessionStore {
 
   public static readonly Name: string = "sessionStore"
 

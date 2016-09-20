@@ -1,7 +1,7 @@
 import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
-import SessionStore from "../stores/SessionStore"
+import {SessionStore} from "../stores/SessionStore"
 import {t} from "../i18n/i18n"
 
 interface LoginFormProps {
@@ -9,7 +9,7 @@ interface LoginFormProps {
 }
 
 @observer([SessionStore.Name])
-export default class LoginForm extends Component<LoginFormProps, {}> {
+export class LoginForm extends Component<LoginFormProps, {}> {
   render() {
     const store = this.props.sessionStore
 

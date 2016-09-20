@@ -1,7 +1,7 @@
 export interface TicketJson extends Ticket {
 }
 
-export default class Ticket {
+export class Ticket {
   readonly id: number
   readonly appTitle: string
   readonly name: string

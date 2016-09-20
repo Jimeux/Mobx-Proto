@@ -7,7 +7,7 @@ interface MenuProps {
   closeMenu: Function
 }
 
-export default class Menu extends Component<MenuProps, {}> {
+export class Menu extends Component<MenuProps, {}> {
   render() {
     const {menuIsOpen, closeMenu} = this.props
 

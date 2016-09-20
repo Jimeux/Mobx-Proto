@@ -1,16 +1,16 @@
 import * as React from "react"
+import * as Transition from "react-addons-css-transition-group"
 import {Component} from "react"
 import {observer} from "mobx-react"
 import {t} from "../i18n/i18n"
-import TicketStore from "../stores/TicketStore"
-import * as Transition from "react-addons-css-transition-group"
+import {TicketStore} from "../stores/TicketStore"
 
 interface TicketListProps {
   ticketStore: TicketStore
 }
 
 @observer([TicketStore.Name])
-export default class TicketList extends Component<TicketListProps, {}> {
+export class TicketList extends Component<TicketListProps, {}> {
   render() {
     const {initialised, loading, getTickets, page, pageUp, pageDown} = this.props.ticketStore
     const tickets = getTickets().map(ticket =>

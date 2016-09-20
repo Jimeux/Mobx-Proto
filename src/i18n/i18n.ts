@@ -96,4 +96,4 @@ i18next
 
 export const t: Function = i18next.t.bind(i18next)
 
-export default i18next
+export const i18n = i18next

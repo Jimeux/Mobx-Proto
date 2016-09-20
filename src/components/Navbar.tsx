@@ -3,15 +3,15 @@ import {Component} from "react"
 import {Link} from "react-router"
 import {Dropdown, MenuItem} from "react-bootstrap"
 import {t} from "../i18n/i18n"
-import AppStore from "../stores/AppStore"
-import SessionStore from "../stores/SessionStore"
+import {AppStore} from "../stores/AppStore"
+import {SessionStore} from "../stores/SessionStore"
 
 interface NavbarProps {
   readonly appStore: AppStore
   readonly sessionStore: SessionStore
 }
 
-export default class Navbar extends Component<NavbarProps, {}> {
+export class Navbar extends Component<NavbarProps, {}> {
   render() {
     const {currentUser, switchLocale, locale, openMenu} = this.props.appStore
     const {logout} = this.props.sessionStore
