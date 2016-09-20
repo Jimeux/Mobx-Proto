@@ -3,9 +3,7 @@ import {Ticket} from "../models/Ticket"
 
 export class TicketService extends BaseService {
 
-  constructor() {
-    super("tickets")
-  }
+  protected readonly BasePath: string = "tickets"
 
   get = async(id: number): Promise<Ticket> => {
     const ticketJson = await this.getRequest(`${id}`)

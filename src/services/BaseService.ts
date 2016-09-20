@@ -1,16 +1,10 @@
-
 export abstract class BaseService {
 
-  static endpoint = "http://localhost:3000"
+  private static readonly Endpoint = "http://localhost:3000"
+  protected abstract readonly BasePath: string
 
-  private basePath: string
-
-  constructor(basePath: string) {
-    this.basePath = `${BaseService.endpoint}/${basePath}`
-  }
-
-  getRequest = async(path: string): Promise<any> => {
-    const response = await fetch(`${this.basePath}/${path}`)
+  protected async getRequest(path: string): Promise<any> {
+    const response = await fetch(this.getUrl(path))
 
     if (response.ok) {
       return response.json()
@@ -19,5 +13,8 @@ export abstract class BaseService {
       return null
     }
   }
+
+  getUrl = (path: string): string =>
+    `${BaseService.Endpoint}/${this.BasePath}/${path}`
 
 }
