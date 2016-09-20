@@ -1,4 +1,4 @@
-import {observable, action} from "mobx"
+import {observable, action, reaction, runInAction} from "mobx"
 import AppStore from "./AppStore"
 import TicketService from "../services/TicketService"
 import Ticket from "../models/Ticket"
@@ -48,7 +48,7 @@ export default class TicketStore {
     if (tickets.length < 10)
       this.atEnd = true
     if (tickets.length > 0)
-    this.tickets = tickets
+      this.tickets = tickets
   }
 
   getTickets = (): Array<Ticket> => {

@@ -12,6 +12,7 @@
     "removeComments": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "noLib": false,
     "skipLibCheck": true,
     "jsx": "react",

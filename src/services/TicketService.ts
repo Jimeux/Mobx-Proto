@@ -16,5 +16,13 @@ export default class TicketService extends BaseService {
     const ticketsJson = await this.getRequest(`?_page=${page}`)
     return ticketsJson.map(Ticket.create)
   }
+/*
+  create {
+  POST  /tickets                          controllers.TicketController.create()
+
+  "applicationId" -> longNumber,
+  "langCode" -> text,
+  "comment" -> optional(text)*/
+//}
 
 }

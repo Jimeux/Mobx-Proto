@@ -2,6 +2,7 @@ import {observable, action, computed} from "mobx"
 import User from "../models/User"
 import History from "react-router/lib/History"
 import i18n, {t} from "../i18n/i18n"
+import {Deserialize} from "cerialize";
 
 export default class AppStore {
 
@@ -17,6 +18,7 @@ export default class AppStore {
 
   constructor(history: History) {
     this.history = history
+    this.restoreUser()
   }
 
   @action setPath = (path: string) =>
@@ -26,6 +28,12 @@ export default class AppStore {
     const next = this.locale === "ja" ? "en" : "ja"
     i18n.changeLanguage(next)
     this.locale = next
+  }
+
+  @action restoreUser = () => {
+    const userJson = localStorage.getItem("user")
+    if (userJson != null)
+      this.currentUser = Deserialize(userJson)
   }
 
   @action setCurrentUser = (user: User) =>

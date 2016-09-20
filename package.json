@@ -24,6 +24,7 @@
     "@types/react-addons-test-utils": "^0.14.14",
     "@types/react-bootstrap": "0.0.32",
     "casual": "^1.5.4",
+    "cerialize": "^0.1.10",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.1",
     "css-loader": "^0.25.0",

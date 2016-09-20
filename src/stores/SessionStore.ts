@@ -2,7 +2,7 @@ import {observable, action, ObservableMap} from "mobx"
 import {t} from "../i18n/i18n"
 import AppStore from "./AppStore"
 import User from "../models/User"
-import {UserJson} from "../models/User"
+import {Deserialize, Serialize} from "cerialize";
 
 export default class SessionStore {
 
@@ -58,19 +58,26 @@ export default class SessionStore {
 
   @action login = (): void => {
     if (this.username === "jim" && this.password === "pass") {
-      this.appStore.setCurrentUser(User.create(({
+      this.appStore.setCurrentUser(Deserialize({
         "id": 16,
         "avatar": "https://placehold.it/28x28",
         "department": "Development",
         "name": "Jim",
         "namae": "ジム"
-      } as UserJson)))
+      }, User))
+      localStorage.setItem("user", Serialize(this.appStore.currentUser))
       this.appStore.setPath("/")
       this.failed = false
     } else {
       this.failed = true
       this.appStore.setNotice(t("login.error"))
     }
+  }
+
+  @action logout = (): void => {
+    localStorage.removeItem("user")
+    window.location.href = "/login"
+    this.appStore.setPath("/login")
   }
 
 }

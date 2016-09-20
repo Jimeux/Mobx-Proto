@@ -50,7 +50,7 @@
     font-size: 75%;
     color: $colorGrey600;
     //border: none !important;
-    border-top: 1px solid $table-border-color !important;
+    //border-top: 1px solid $table-border-color !important;
     border-bottom: none !important;
     padding: 14px 8px !important;
 
@@ -89,12 +89,12 @@
 }
 
 .ticket-list-enter {
-  transform: translateY(40%);
-  opacity: 0.4;
+  transform: translateY(30%);
+  opacity: 0.75;
 }
 
 .ticket-list-enter.ticket-list-enter-active {
   transform: none;
   opacity: 1;
-  transition: all 300ms ease-in-out;
+  transition: all 320ms ease-in;
 }

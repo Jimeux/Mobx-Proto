@@ -12,7 +12,7 @@ interface TicketListProps {
 @observer([TicketStore.Name])
 export default class TicketList extends Component<TicketListProps, {}> {
   render() {
-    const {initialised, getTickets, page, pageUp, pageDown} = this.props.ticketStore
+    const {initialised, loading, getTickets, page, pageUp, pageDown} = this.props.ticketStore
     const tickets = getTickets().map(ticket =>
       <TicketRow key={`ticket-${ticket.id}`} ticket={ticket}/>)
 
@@ -31,6 +31,7 @@ export default class TicketList extends Component<TicketListProps, {}> {
 
     const ticketList =
       <div>
+        {initialised && loading ? <div className="loader-bar"></div> : null}
         {actionMenu}
 
         <div className="ticket-table-wrapper">

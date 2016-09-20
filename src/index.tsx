@@ -16,7 +16,6 @@ import NotFound from "./components/NotFound"
 import MainLayout from "./components/MainLayout"
 
 import "./styles/main.scss"
-import {UserJson, default as User} from "./models/User";
 
 useStrict(true)
 

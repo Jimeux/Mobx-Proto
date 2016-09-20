@@ -6,14 +6,17 @@ import AppStore from "../stores/AppStore"
 import Menu from "../components/Menu"
 import Navbar from "../components/Navbar"
 import Snackbar from "../components/Snackbar"
+import SessionStore from "../stores/SessionStore"
 
 interface MainLayoutProps {
-  appStore: AppStore
+  readonly appStore: AppStore
+  readonly sessionStore: SessionStore
 }
 
-@observer([AppStore.Name])
+@observer([AppStore.Name, SessionStore.Name])
 export default class MainLayout extends Component<MainLayoutProps, {}> {
   render() {
+    const {appStore, sessionStore} = this.props
     const {locale, notice, clearNotice} = this.props.appStore
     const {menuIsOpen, closeMenu, currentUser} = this.props.appStore
 
@@ -22,7 +25,7 @@ export default class MainLayout extends Component<MainLayoutProps, {}> {
         <Menu menuIsOpen={menuIsOpen} closeMenu={closeMenu}/>
 
         <Transition transitionName="navbar" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-          {currentUser ? <Navbar appStore={this.props.appStore}/> : null}
+          {currentUser ? <Navbar appStore={this.props.appStore} sessionStore={sessionStore}/> : null}
         </Transition>
 
         <main>{this.props.children}</main>
