@@ -13,7 +13,7 @@ export const routes = (appStore: AppStore) => {
   const authorise = (role: UserRole) => {
     return (nextState: Object, replace: Function) => {
       if (appStore.isAuthenticated() && appStore.notAuthorizedFor(role))
-        appStore.redirectHome()
+        replace(appStore.homePath)
       else if (appStore.notAuthorizedFor(role))
         replace("/login")
     }
@@ -21,7 +21,7 @@ export const routes = (appStore: AppStore) => {
 
   const redirectHome = (nextState: Object, replace: Function) => {
     if (appStore.isAuthorizedFor(UserRole.Writer))
-      appStore.redirectHome()
+      replace(appStore.homePath)
   }
 
   return (

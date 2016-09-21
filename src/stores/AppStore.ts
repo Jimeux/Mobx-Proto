@@ -24,10 +24,16 @@ export class AppStore {
   @action setPath = (path: string) =>
     this.history.replace(path)
 
-  @action redirectHome = () => {
-    const path = (this.currentUser == null) ?
-      "login" : this.currentUser.roleName
-    this.setPath(`/${path}`)
+  public get homePath(): string {
+    if (this.currentUser == null)
+      return "login"
+
+    switch (this.currentUser.role) {
+      case UserRole.Proofreader: return "proofreader"
+      case UserRole.Editor:      return "editor"
+      case UserRole.Chief:       return "chiefs"
+      default:                   return "writer"
+    }
   }
 
   @action switchLocale = () => {
@@ -62,10 +68,10 @@ export class AppStore {
     this.menuIsOpen = false
 
   isAuthenticated = (): boolean =>
-    this.currentUser != null
+  this.currentUser != null
 
   isAuthorizedFor = (role: UserRole): boolean =>
-    this.currentUser != null && this.currentUser.role >= role
+  this.currentUser != null && this.currentUser.role >= role
 
   notAuthorizedFor = (role: UserRole): boolean =>
     !(this.isAuthorizedFor(role))

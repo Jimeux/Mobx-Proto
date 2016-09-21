@@ -27,13 +27,4 @@ export class User {
     this.department = department
   }
 
-  public get roleName(): string {
-    switch (this.role) {
-      case UserRole.Proofreader: return "proofreader"
-      case UserRole.Editor:      return "editor"
-      case UserRole.Chief:       return "chiefs"
-      default:                   return "writer"
-    }
-  }
-
 }

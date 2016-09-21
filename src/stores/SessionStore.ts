@@ -57,23 +57,36 @@ export class SessionStore {
     this.username != null && this.password.length > 0 && this.username.length > 0
 
   @action login = (): void => {
-    if (this.username === "jim" && this.password === "pass") {
-      this.appStore.setCurrentUser(Deserialize({
+    if (this.username === "editor" && this.password === "pass") {
+      this.fakeLogin({
+        "id": 16,
+        "role": 4,
+        "avatar": "https://placehold.it/28x28",
+        "department": "Development",
+        "name": "Editor Jim",
+        "namae": "ジム"
+      })
+    } else if (this.username === "writer" && this.password === "pass") {
+      this.fakeLogin({
         "id": 16,
         "role": 1,
         "avatar": "https://placehold.it/28x28",
         "department": "Development",
-        "name": "Jim",
+        "name": "Writer Jim",
         "namae": "ジム"
-      }, User))
-      const userString = JSON.stringify(Serialize(this.appStore.currentUser))
-      localStorage.setItem("user", userString)
-      this.appStore.redirectHome()
-      this.failed = false
+      })
     } else {
       this.failed = true
       this.appStore.setNotice(t("login.error"))
     }
+  }
+
+  @action fakeLogin(json: any) {
+      this.appStore.setCurrentUser(Deserialize(json, User))
+      const userString = JSON.stringify(Serialize(this.appStore.currentUser))
+      localStorage.setItem("user", userString)
+      this.appStore.setPath(this.appStore.homePath)
+      this.failed = false
   }
 
   @action logout = (): void => {
