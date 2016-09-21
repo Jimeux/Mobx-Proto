@@ -5,7 +5,7 @@ import {observer} from "mobx-react"
 import {AppStore} from "../stores/AppStore"
 import {Menu} from "../components/Menu"
 import {Navbar} from "../components/Navbar"
-import {Snackbar} from "../components/Snackbar"
+import {Snackbar} from "./common/SnackBar"
 import {SessionStore} from "../stores/SessionStore"
 
 interface MainLayoutProps {

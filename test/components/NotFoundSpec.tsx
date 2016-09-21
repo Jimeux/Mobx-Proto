@@ -2,7 +2,7 @@ import * as React from "react"
 import {expect} from "chai"
 import {shallow} from "enzyme"
 import {t} from "../../src/i18n/i18n"
-import NotFound from "../../src/components/NotFound"
+import NotFound from "../../src/components/common/NotFound"
 
 describe("NotFound", () => {
 

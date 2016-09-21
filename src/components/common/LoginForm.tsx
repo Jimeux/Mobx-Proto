@@ -1,8 +1,8 @@
 import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
-import {SessionStore} from "../stores/SessionStore"
-import {t} from "../i18n/i18n"
+import {SessionStore} from "../../stores/SessionStore"
+import {t} from "../../i18n/i18n"
 
 interface LoginFormProps {
   sessionStore: SessionStore

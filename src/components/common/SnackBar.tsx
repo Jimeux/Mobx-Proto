@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as Transition from "react-addons-css-transition-group"
 import {Component} from "react"
-import {t} from "../i18n/i18n"
+import {t} from "../../i18n/i18n"
 
 interface SnackBarProps {
   notice: string | null,

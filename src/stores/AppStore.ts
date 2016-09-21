@@ -22,7 +22,7 @@ export class AppStore {
   }
 
   @action setPath = (path: string) =>
-    this.history.replace(path)
+    this.history.push(path)
 
   public get homePath(): string {
     if (this.currentUser == null)

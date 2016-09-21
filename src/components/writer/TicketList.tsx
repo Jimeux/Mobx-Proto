@@ -2,19 +2,23 @@ import * as React from "react"
 import * as Transition from "react-addons-css-transition-group"
 import {Component} from "react"
 import {observer} from "mobx-react"
-import {t} from "../i18n/i18n"
-import {TicketStore} from "../stores/TicketStore"
+import {t} from "../../i18n/i18n"
+import {TicketStore} from "../../stores/TicketStore"
+import {AppStore} from "../../stores/AppStore"
 
 interface TicketListProps {
-  ticketStore: TicketStore
+  readonly appStore: AppStore
+  readonly ticketStore: TicketStore
 }
 
-@observer([TicketStore.Name])
+@observer([TicketStore.Name, AppStore.Name])
 export class TicketList extends Component<TicketListProps, {}> {
   render() {
     const {initialised, loading, getTickets, page, pageUp, pageDown} = this.props.ticketStore
     const tickets = getTickets().map(ticket =>
-      <TicketRow key={`ticket-${ticket.id}`} ticket={ticket}/>)
+      <TicketRow key={`ticket-${ticket.id}`}
+                 ticket={ticket}
+                 onClick={() => this.props.appStore.setPath(`/writer/articles/create/${ticket.id}`)} />)
 
     const actionMenu =
       <div className="action-menu">
@@ -78,8 +82,8 @@ const TicketHeader = () =>
   </tr>
   </thead>
 
-const TicketRow = ({ticket}) =>
-  <tr>
+const TicketRow = ({ticket, onClick}) =>
+  <tr onClick={onClick}>
     <td>{ticket.name}</td>
     <td>{ticket.appTitle}</td>
     <td>{ticket.name}</td>

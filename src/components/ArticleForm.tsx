@@ -1,35 +1,36 @@
 import * as React from "react"
 import {Component} from "react"
+import {Router} from "react-router"
 import {observer} from "mobx-react"
 import {SessionStore} from "../stores/SessionStore"
 import {t} from "../i18n/i18n"
+import {ArticleStore} from "../stores/ArticleStore"
 
 interface ArticleFormProps {
-  sessionStore: SessionStore
+  readonly articleStore: ArticleStore
+  readonly sessionStore: SessionStore
+  readonly params: Router.Params
 }
 
 interface ArticleFormState {
   sticky: boolean
 }
 
-@observer([SessionStore.Name])
+@observer([SessionStore.Name, ArticleStore.Name])
 export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
 
   constructor(props: ArticleFormProps) {
     super(props)
     this.state = {sticky: false}
+    const articleId = parseInt(props.params["id"])
+    props.articleStore.fetchArticle(articleId)
   }
 
-  handleScroll = () =>
-    this.setState({
-      sticky: window.pageYOffset >= 50
-    })
+  handleScroll = () => this.setState({sticky: window.pageYOffset >= 50})
 
-  componentDidMount = () =>
-    window.addEventListener("scroll", this.handleScroll)
+  componentDidMount = () => window.addEventListener("scroll", this.handleScroll)
 
-  componentWillUnmount = () =>
-    window.removeEventListener("scroll", this.handleScroll)
+  componentWillUnmount = () => window.removeEventListener("scroll", this.handleScroll)
 
   render() {
     const store = this.props.sessionStore
@@ -119,11 +120,4 @@ const TextAreaField = ({label, error, onChange, rows = 4}) =>
   <div className={`textarea-field ${error ? "error" : ""}`}>
     <label>{label}{error}</label>
     <textarea onChange={onChange} rows={rows}/>
-  </div>
-
-const Submit = ({action, value, disabled}) =>
-  <div className="submit">
-    <button onClick={action} disabled={disabled}>
-      {value}
-    </button>
   </div>
