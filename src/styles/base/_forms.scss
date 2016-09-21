@@ -11,9 +11,9 @@
   input {
     @extend .form-control;
     box-shadow: none;
-    padding: 5px 0;
-    border: none;
-    border-bottom: 1px solid $colorGrey400;
+    padding: 5px 10px;
+    border: 1px solid $colorGrey400;
+    margin: 15px 0;
   }
 
   input:focus, textarea:focus {

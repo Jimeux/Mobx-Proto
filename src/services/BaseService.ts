@@ -14,6 +14,17 @@ export abstract class BaseService {
     }
   }
 
+  protected async postRequest(path: string, data: JSON): Promise<any> {
+    const response = await fetch(this.getUrl(path), data)
+
+    if (response.ok) {
+      return response.json()
+    } else {
+      console.error(response)
+      return null
+    }
+  }
+
   getUrl = (path: string): string =>
     `${BaseService.Endpoint}/${this.BasePath}/${path}`
 

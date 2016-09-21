@@ -9,7 +9,7 @@
       "firstDraftDue": "2009/10/24",
       "articleType": "658 LxH",
       "gradeRange": "A",
-      "status": "error reiciendis"
+      "status": "1"
     },
     {
       "id": 1211,
@@ -20,7 +20,7 @@
       "firstDraftDue": "1997/12/23",
       "articleType": "804 KRN",
       "gradeRange": "A",
-      "status": "fugiat nihil"
+      "status": "1"
     },
     {
       "id": 111,
@@ -31,7 +31,7 @@
       "firstDraftDue": "1997/12/23",
       "articleType": "804 KRN",
       "gradeRange": "A",
-      "status": "fugiat nihil"
+      "status": "1"
     },
     {
       "id": 1291,
@@ -42,7 +42,7 @@
       "firstDraftDue": "1997/12/23",
       "articleType": "804 KRN",
       "gradeRange": "A",
-      "status": "fugiat nihil"
+      "status": "1"
     },
     {
       "id": 1887,
@@ -53,7 +53,7 @@
       "firstDraftDue": "1971/04/17",
       "articleType": "878 JCJ",
       "gradeRange": "A",
-      "status": "vel laudantium"
+      "status": "1"
     },
     {
       "id": 1896,
@@ -64,7 +64,7 @@
       "firstDraftDue": "1992/05/17",
       "articleType": "570 lGM",
       "gradeRange": "A",
-      "status": "provident porro"
+      "status": "1"
     },
     {
       "id": 1523,
@@ -75,7 +75,7 @@
       "firstDraftDue": "1994/12/09",
       "articleType": "768 YVg",
       "gradeRange": "A",
-      "status": "ea soluta"
+      "status": "1"
     },
     {
       "id": 1931,
@@ -86,7 +86,7 @@
       "firstDraftDue": "1985/02/05",
       "articleType": "377 RHd",
       "gradeRange": "B",
-      "status": "tempore consequatur"
+      "status": "1"
     },
     {
       "id": 1393,
@@ -97,7 +97,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 393,
@@ -108,7 +108,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 343,
@@ -119,7 +119,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 493,
@@ -130,7 +130,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 403,
@@ -141,7 +141,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 871,
@@ -152,7 +152,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 872,
@@ -163,7 +163,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 873,
@@ -174,7 +174,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 874,
@@ -185,7 +185,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 875,
@@ -196,7 +196,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 876,
@@ -207,7 +207,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 666,
@@ -218,7 +218,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     },
     {
       "id": 667,
@@ -229,7 +229,7 @@
       "firstDraftDue": "2004/12/25",
       "articleType": "554 lqu",
       "gradeRange": "A",
-      "status": "consequatur in"
+      "status": "1"
     }
   ]
 }

@@ -23,6 +23,10 @@ export class TicketStore {
     this.ticketService = ticketService
   }
 
+  createTicket = async(): Promise<void> => {
+    console.log("Create ticket")
+  }
+
   @action setLoading = (loading: boolean) =>
     this.loading = loading
 

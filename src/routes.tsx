@@ -7,6 +7,7 @@ import {NotFound} from "./components/common/NotFound"
 import {MainLayout} from "./components/MainLayout"
 import {UserRole} from "./models/User"
 import {AppStore} from "./stores/AppStore"
+import {TicketForm} from "./components/editor/TicketForm"
 
 export const routes = (appStore: AppStore) => {
 
@@ -34,7 +35,7 @@ export const routes = (appStore: AppStore) => {
       </Route>
 
       <Route path="/editor" onEnter={authorise(UserRole.Editor)}>
-        <IndexRoute component={ArticleForm}/>
+        <IndexRoute component={TicketForm}/>
       </Route>
 
       <Route path="/login" component={LoginForm} onEnter={redirectHome}/>

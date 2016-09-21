@@ -1,17 +1,15 @@
 @import "base/variables";
+
 @import "vendor/bootstrap";
 
 @import "components/navbar";
 @import "components/menu";
-@import "components/snackbar";
-@import "components/loader";
-@import "components/login-menu";
-
 @import "components/ticket-table";
 @import "components/article-form";
-@import "base/forms";
+@import "components/login-menu";
 
-@import "components/login-form";
+@import "components/common/index";
+@import "base/forms";
 
 body {
   background: $colorGrey100;
