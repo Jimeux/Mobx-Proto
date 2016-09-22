@@ -69,36 +69,28 @@ const TicketHeader = () =>
       <span className="sort-icon">
         <i className="material-icons">arrow_upward</i>
       </span>
-      <span className="name">Name</span>
+      <span className="name">ID</span>
     </th>
-    <th>App Title</th>
-    <th>Name</th>
-    <th>Item Type</th>
-    <th>Article Unit Price</th>
-    <th>First Draft Due</th>
-    <th>Article Type</th>
-    <th>Grade Range</th>
+    <th>App ID</th>
+    <th>Article ID</th>
     <th>Status</th>
+    <th>Comment</th>
   </tr>
   </thead>
 
 const TicketRow = ({ticket, onClick}) =>
   <tr onClick={onClick}>
-    <td>{ticket.name}</td>
-    <td>{ticket.appTitle}</td>
-    <td>{ticket.name}</td>
-    <td>{ticket.itemType}</td>
-    <td>{ticket.articleUnitPrice}</td>
-    <td>{ticket.firstDraftDue}</td>
-    <td>{ticket.articleType}</td>
-    <td>{ticket.gradeRange}</td>
+    <td>{ticket.id}</td>
+    <td>{ticket.applicationId}</td>
+    <td>{ticket.articleId}</td>
     <td>{ticket.status}</td>
+    <td>{ticket.comment}</td>
   </tr>
 
 const TicketFooter = ({page, pageUp, pageDown}) =>
   <tfoot>
   <tr>
-    <td colSpan={9}>
+    <td colSpan={5}>
       <span className="page-icon" onClick={pageUp}>
         <i className="material-icons">chevron_right</i>
       </span>

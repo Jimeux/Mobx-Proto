@@ -9,7 +9,7 @@ const en = {
   "translation": {
     "nav": {
       "brand": "Appliv Cloud",
-      "message": "You're logged in as {{name}}"
+      "message": "You're logged in as {{title}}"
     },
 
     "login": {
@@ -32,10 +32,23 @@ const en = {
       "dismiss": "Dismiss"
     },
 
+    "ticket": {
+      "create": {
+        "title": "Create Ticket",
+        "submit": "Create",
+        "applicationId": "Application ID",
+        "comment": "Comment",
+        "success": "Ticket created with ID {{id}}"
+      }
+    },
+
     "error": {
-      "too_short": " should be at least {{min}} characters long",
-      "too_long": " should be no more than {{max}} characters long",
-      "alpha_num": " can contain only letters, numbers and - or _"
+      "required": " is required",
+      "min_length": " must be at least {{min}} characters long",
+      "max_length": " must be no more than {{max}} characters long",
+      "integer": " must be an integer",
+      "alpha_num": " can contain only letters, numbers and - or _",
+      "unexpected": "An unexpected error occurred"
     }
   }
 }
@@ -44,7 +57,7 @@ const ja = {
   "translation": {
     "nav": {
       "brand": "アプリヴクラウド",
-      "message": "{{name}}としてログインしています"
+      "message": "{{title}}としてログインしています"
     },
 
     "login": {

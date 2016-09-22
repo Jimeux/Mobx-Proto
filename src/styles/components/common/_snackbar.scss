@@ -41,7 +41,7 @@
 
 .snackbar-enter.snackbar-enter-active {
   transform: none;
-  transition: transform 250ms ease-in;
+  transition: transform 200ms ease-out;
 }
 
 .snack-leave {

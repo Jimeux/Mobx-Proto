@@ -1,23 +1,25 @@
 import {BaseService} from "./BaseService"
 import {Ticket} from "../models/Ticket"
+import {Deserialize} from "cerialize"
 
 export class TicketService extends BaseService {
 
   protected readonly BasePath: string = "tickets"
 
-  get = async(id: number): Promise<Ticket> => {
-    const ticketJson = await this.getRequest(`${id}`)
-    return Ticket.create(ticketJson)
+  async get(id: number): Promise<Ticket> {
+    const response = await this.getRequest(`${id}`)
+    const ticketJson = await response.json()
+    return Deserialize(ticketJson, Ticket)
   }
 
-  create = async(ticket: Ticket): Promise<Ticket> => {
-    //const ticketJson = await this.getRequest(`${id}`)
-    return Ticket.create(ticket)
+  async create(ticket: any): Promise<Response | null> {
+    return await this.postRequest("/", JSON.stringify(ticket))
   }
 
-  index = async(page: number): Promise<Array<Ticket>> => {
-    const ticketsJson = await this.getRequest(`?status=1&_page=${page}`)
-    return ticketsJson.map(Ticket.create)
+  async index (page: number): Promise<Array<Ticket>> {
+    const response = await this.getRequest(`status/0`)
+    const ticketsJson = await response.json()
+    return ticketsJson.map(ticket => Deserialize(ticket, Ticket))
   }
 
 }

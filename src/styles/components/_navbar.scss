@@ -1,7 +1,7 @@
 @import "../base/variables";
 
 nav {
-  //box-shadow: $elevation-2dp;
+  box-shadow: $elevation-2dp;
 }
 
 .nav-title-bar {
@@ -65,7 +65,7 @@ nav {
   height: 50px;
   padding: 0 15px;
   background: $color400;
-  //box-shadow: $elevation-2dp;
+  box-shadow: $elevation-2dp;
 
   .sections {
     @extend .pull-left;

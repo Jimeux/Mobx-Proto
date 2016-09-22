@@ -38,11 +38,11 @@ export class TicketStore {
       const tickets = await this.ticketService.index(this.page)
 
       if (tickets === null)
-        this.appStore.setNotice(t("tickets.notice"))
+        this.appStore.notify(t("tickets.notice"))
       else
         setTimeout(() => this.receiveTickets(tickets), 0)
     } catch (error) {
-      this.appStore.setNotice(error.toString())
+      this.appStore.notify(error.toString())
     }
   }
 
@@ -51,8 +51,10 @@ export class TicketStore {
     this.setLoading(false)
     if (tickets.length < 10)
       this.atEnd = true
-    if (tickets.length > 0)
+    if (tickets.length > 0) {
+      console.log(tickets)
       this.tickets = tickets
+    }
   }
 
   getTickets = (): Array<Ticket> => {

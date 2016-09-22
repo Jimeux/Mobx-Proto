@@ -52,7 +52,11 @@ export class AppStore {
   @action setCurrentUser = (user: User) =>
     this.currentUser = user
 
-  @action setNotice = (notice: string) => {
+  @computed get langCode(): string {
+    return this.currentUser == null ? "en" : this.currentUser.langCode
+  }
+
+  @action notify = (notice: string) => {
     this.notice = notice
     clearTimeout(this.clearNoticeTimeout)
     this.clearNoticeTimeout = setTimeout(this.clearNotice, 5000)

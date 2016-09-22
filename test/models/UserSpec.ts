@@ -12,7 +12,7 @@ describe("User", () => {
 
       expect(user.id).to.equal(userJson.id)
       expect(user.email).to.equal(userJson.email)
-      expect(user.name).to.equal(userJson.name)
+      expect(user.title).to.equal(userJson.title)
       expect(user.namae).to.equal(userJson.namae)
       expect(user.avatar).to.equal(userJson.avatar)
       expect(user.department).to.equal(userJson.department)

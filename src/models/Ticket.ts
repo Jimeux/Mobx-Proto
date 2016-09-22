@@ -1,35 +1,31 @@
-export interface TicketJson extends Ticket {
+import {autoserialize} from "cerialize"
+
+export enum TicketStatus {
+  Writing   = 0,
+  Editing   = 1,
+  Published = 2,
+}
+
+export interface TicketRequest {
+  applicationId: number
+  langCode: string
+  comment: string | null
 }
 
 export class Ticket {
-  readonly id: number
-  readonly appTitle: string
-  readonly name: string
-  readonly itemType: string
-  readonly articleUnitPrice: string
-  readonly firstDraftDue: string
-  readonly articleType: string
-  readonly gradeRange: string
-  readonly status: string
+  @autoserialize readonly id: number
+  @autoserialize readonly applicationId: number
+  @autoserialize readonly articleId: number
+  @autoserialize readonly status: number
+  @autoserialize readonly comment: string | null
 
-  private constructor(id: number, appTitle: string, name: string,
-              itemType: string, articleUnitPrice: string, firstDraftDue: string,
-              articleType: string, gradeRange: string, status: string) {
+  constructor(id: number, applicationId: number, articleId: number,
+              status: number, comment: string | null) {
     this.id = id
-    this.appTitle = appTitle
-    this.name = name
-    this.itemType = itemType
-    this.articleUnitPrice = articleUnitPrice
-    this.firstDraftDue = firstDraftDue
-    this.articleType = articleType
-    this.gradeRange = gradeRange
+    this.applicationId = applicationId
+    this.articleId = articleId
     this.status = status
-  }
-
-  static create(json: TicketJson) {
-    return new Ticket(json.id, json.appTitle, json.name,
-      json.itemType, json.articleUnitPrice, json.firstDraftDue,
-      json.articleType, json.gradeRange, json.status)
+    this.comment = comment
   }
 
 }

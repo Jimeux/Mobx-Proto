@@ -11,6 +11,12 @@ new WebpackDevServer(webpack(config), {
   stats: "minimal",
   historyApiFallback: {
     index: "public/index.html"
+  },
+  proxy: {
+    '/api': {
+      target: 'http://localhost:9000',
+      secure: false
+    }
   }
 }).listen(8000, "localhost", (err, result) => {
   if (err)

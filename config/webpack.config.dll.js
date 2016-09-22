@@ -22,14 +22,14 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, "../public"),
-    filename: "[name].dll.js",
-    library: "[name]_library"
+    filename: "[title].dll.js",
+    library: "[title]_library"
   },
 
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(__dirname, "../public", "[name]-manifest.json"),
-      name: "[name]_library"
+      path: path.join(__dirname, "../public", "[title]-manifest.json"),
+      name: "[title]_library"
     })
   ]
 

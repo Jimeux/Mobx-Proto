@@ -60,24 +60,22 @@ export class SessionStore {
     if (this.username === "editor" && this.password === "pass") {
       this.fakeLogin({
         "id": 16,
+        "email": "editor@jim.com",
+        "langCode": "en",
         "role": 4,
-        "avatar": "https://placehold.it/28x28",
-        "department": "Development",
-        "name": "Editor Jim",
-        "namae": "ジム"
+        "name": "Editor Jim"
       })
     } else if (this.username === "writer" && this.password === "pass") {
       this.fakeLogin({
-        "id": 16,
+        "id": 17,
+        "email": "writer@jim.com",
+        "langCode": "en",
         "role": 1,
-        "avatar": "https://placehold.it/28x28",
-        "department": "Development",
-        "name": "Writer Jim",
-        "namae": "ジム"
+        "name": "Writer Jim"
       })
     } else {
       this.failed = true
-      this.appStore.setNotice(t("login.error"))
+      this.appStore.notify(t("login.error"))
     }
   }
 

@@ -1,4 +1,4 @@
-import {autoserialize, autoserializeAs} from "cerialize"
+import {autoserialize} from "cerialize"
 
 export enum UserRole {
   Writer      = 1,
@@ -10,21 +10,16 @@ export enum UserRole {
 export class User {
   @autoserialize readonly id: number
   @autoserialize readonly email: string
+  @autoserialize readonly langCode: string
   @autoserialize readonly name: string
-  @autoserialize readonly namae: string
-  @autoserialize readonly avatar: string
-  @autoserialize readonly department: string
-  @autoserializeAs(UserRole) readonly role: UserRole
+  @autoserialize readonly role: number
 
-  constructor(id: number, role: UserRole, email: string, name: string,
-              namae: string, avatar: string, department: string) {
+  constructor(id: number, email: string, langCode: string, name: string, role: number) {
     this.id = id
-    this.role = role
     this.email = email
+    this.langCode = langCode
     this.name = name
-    this.namae = namae
-    this.avatar = avatar
-    this.department = department
+    this.role = role
   }
 
 }

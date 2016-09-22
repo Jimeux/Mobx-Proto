@@ -11,18 +11,25 @@ interface TicketFormProps {
 @observer([TicketFormStore.Name])
 export class TicketForm extends Component<TicketFormProps, {}> {
   render() {
-    const {applicationId, comment, setApplicationId, setComment} = this.props.ticketFormStore
+    const {applicationId, setApplicationId, comment, setComment, createTicket, invalid} = this.props.ticketFormStore
 
     return (
-      <SleekForm title="Create Ticket" submit="Create">
+      <SleekForm title={t("ticket.create.title")}
+                 submit={t("ticket.create.submit")}
+                 onSubmit={createTicket}
+                 disabled={invalid}>
         <div>
           <div className={`text-field ${applicationId.error ? "error" : ""}`}>
-            <label>Application ID {applicationId.error}</label>
-            <input type="text" onChange={(e) => setApplicationId((e.target as HTMLInputElement).value)}/>
+            <label>{t("ticket.create.applicationId")} {applicationId.error}</label>
+            <input type="number"
+                   value={applicationId.value}
+                   onChange={(e) => setApplicationId((e.target as HTMLInputElement).value)}/>
           </div>
           <div className={`text-field ${comment.error ? "error" : ""}`}>
-            <label>Comment {comment.error}</label>
-            <textarea rows={3} onChange={(e) => setComment((e.target as HTMLInputElement).value)}/>
+            <label>{t("ticket.create.comment")} {comment.error}</label>
+            <textarea rows={3}
+                      value={comment.value}
+                      onChange={(e) => setComment((e.target as HTMLInputElement).value)}/>
           </div>
         </div>
       </SleekForm>
@@ -38,7 +45,7 @@ export const SleekForm = (props) =>
     <div className="body">
       {props.children}
       <div className="submit">
-        <button onClick={() => {}}>
+        <button onClick={props.onSubmit} disabled={props.disabled}>
           {props.submit}
         </button>
       </div>
