@@ -26,9 +26,9 @@ export class SessionStore {
 
   @action validateUsername = (username: string): void => {
     if (username.length < 3)
-      this.errors.set("username", t("error.too_short", {min: 3}))
+      this.errors.set("username", t("error.min_length", {min: 3}))
     else if (username.length > 100)
-      this.errors.set("username", t("error.too_long", {max: 100}))
+      this.errors.set("username", t("error.max_length", {max: 100}))
     else if (!(!!username.match(/^[_\-\w]+$/)))
       this.errors.set("username", t("error.alpha_num"))
     else
@@ -42,9 +42,9 @@ export class SessionStore {
 
   @action validatePassword = (password: string): void => {
     if (password.length < 4)
-      this.errors.set("password", t("error.too_short", {min: 4}))
+      this.errors.set("password", t("error.min_length", {min: 4}))
     else if (password.length > 100)
-      this.errors.set("password", t("error.too_long", {max: 100}))
+      this.errors.set("password", t("error.max_length", {max: 100}))
     else
       this.errors.delete("password")
   }

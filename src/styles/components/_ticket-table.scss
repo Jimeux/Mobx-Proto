@@ -1,12 +1,16 @@
 @import "../base/variables";
+@import "../vendor/bootstrap/mixins";
 
 .ticket-table-wrapper {
-  padding: 44px 100px;
+  margin: 44px auto;
+
+  @include make-sm-column-offset(2);
+  @include make-sm-column(8, 0);
 }
 
 .ticket-table {
   background: white;
-  box-shadow: $elevation-2dp;
+  box-shadow: $elevation-4dp;
   width: 100%;
 
   .title-bar {
@@ -86,15 +90,4 @@
       float: right;
     }
   }
-}
-
-.ticket-list-enter {
-  transform: translateY(30%);
-  opacity: 0.75;
-}
-
-.ticket-list-enter.ticket-list-enter-active {
-  transform: none;
-  opacity: 1;
-  transition: all 320ms ease-in;
 }

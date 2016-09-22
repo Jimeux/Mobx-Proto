@@ -3,6 +3,7 @@ import {Component} from "react"
 import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
 import {TicketFormStore} from "../../stores/TicketFormStore"
+import {SleekForm} from "../common/SleekForm"
 
 interface TicketFormProps {
   readonly ticketFormStore: TicketFormStore
@@ -18,36 +19,22 @@ export class TicketForm extends Component<TicketFormProps, {}> {
                  submit={t("ticket.create.submit")}
                  onSubmit={createTicket}
                  disabled={invalid}>
-        <div>
-          <div className={`text-field ${applicationId.error ? "error" : ""}`}>
-            <label>{t("ticket.create.applicationId")} {applicationId.error}</label>
-            <input type="number"
-                   value={applicationId.value}
-                   onChange={(e) => setApplicationId((e.target as HTMLInputElement).value)}/>
-          </div>
-          <div className={`text-field ${comment.error ? "error" : ""}`}>
-            <label>{t("ticket.create.comment")} {comment.error}</label>
-            <textarea rows={3}
-                      value={comment.value}
-                      onChange={(e) => setComment((e.target as HTMLInputElement).value)}/>
-          </div>
+
+        <div className={`text-field ${applicationId.error ? "error" : ""}`}>
+          <label>{t("ticket.create.applicationId")} {applicationId.error}</label>
+          <input type="number"
+                 value={applicationId.value}
+                 onChange={(e) => setApplicationId((e.target as HTMLInputElement).value)}/>
         </div>
+
+        <div className={`text-field ${comment.error ? "error" : ""}`}>
+          <label>{t("ticket.create.comment")} {comment.error}</label>
+          <textarea rows={3}
+                    value={comment.value}
+                    onChange={(e) => setComment((e.target as HTMLInputElement).value)}/>
+        </div>
+
       </SleekForm>
     )
   }
 }
-
-export const SleekForm = (props) =>
-  <div className="login-form">
-    <div className="header">
-      <span>{props.title}</span>
-    </div>
-    <div className="body">
-      {props.children}
-      <div className="submit">
-        <button onClick={props.onSubmit} disabled={props.disabled}>
-          {props.submit}
-        </button>
-      </div>
-    </div>
-  </div>

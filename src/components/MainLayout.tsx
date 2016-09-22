@@ -1,5 +1,4 @@
 import * as React from "react"
-import * as Transition from "react-addons-css-transition-group"
 import {Component} from "react"
 import {observer} from "mobx-react"
 import {AppStore} from "../stores/AppStore"
@@ -23,11 +22,7 @@ export class MainLayout extends Component<MainLayoutProps, {}> {
     return (
       <div className="main-layout" key={locale}>
         <Menu menuIsOpen={menuIsOpen} closeMenu={closeMenu}/>
-
-        <Transition transitionName="navbar" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-          {currentUser ? <Navbar appStore={appStore} sessionStore={sessionStore}/> : null}
-        </Transition>
-
+        {currentUser ? <Navbar appStore={appStore} sessionStore={sessionStore}/> : null}
         <main>{this.props.children}</main>
         <Snackbar notice={notice} clearNotice={clearNotice}/>
       </div>

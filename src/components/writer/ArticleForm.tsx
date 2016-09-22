@@ -2,9 +2,9 @@ import * as React from "react"
 import {Component} from "react"
 import {Router} from "react-router"
 import {observer} from "mobx-react"
-import {SessionStore} from "../stores/SessionStore"
-import {t} from "../i18n/i18n"
-import {ArticleStore} from "../stores/ArticleStore"
+import {SessionStore} from "../../stores/SessionStore"
+import {t} from "../../i18n/i18n"
+import {ArticleStore} from "../../stores/ArticleStore"
 
 interface ArticleFormProps {
   readonly articleStore: ArticleStore
@@ -45,15 +45,15 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
         </div>
         <div className="actions">
           <i className="material-icons">timer</i>
-          <i className="material-icons">mode_edit</i>
+          <i className="material-icons">undo</i>
           <i className="material-icons">save</i>
         </div>
       </div>
 
     return (
       <div className={`article-form ${stickyClass}`}>
-        {actionMenu}
         <div className="body-wrapper">
+          {actionMenu}
           <div className="body">
             <section>
               <span className="heading">Introductory Article</span>
@@ -95,16 +95,6 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
             </section>
           </div>
         </div>
-
-        <aside>
-          <section>
-            <h3>Ticket Info</h3>
-          </section>
-          <section>
-            <h3>Process</h3>
-          </section>
-        </aside>
-
       </div>
     )
   }

@@ -3,19 +3,16 @@
 
 .article-form {
 
-  //padding: 28px;
-
   .body-wrapper {
-    @include make-sm-column(9, 0);
-    padding-right: 15px;
+    @include make-sm-column-offset(2);
+    @include make-sm-column(8, 0);
+    margin: 40px;
+    box-shadow: $elevation-4dp;
+    border-radius: 2px;
   }
 
   .body {
-    //margin: 20px;
-    box-shadow: $elevation-2dp;
-    //border-radius: 2px;
     background: white;
-    //border-right: 1px solid $table-border-color;
 
     section {
       padding: 34px 50px;
@@ -59,20 +56,4 @@
 
 .article-form.sticky {
   padding-top: 50px;
-}
-
-.article-form aside {
-  @include make-sm-column(3, 0);
-
-  section {
-    h3 {
-      margin: 10px 0;
-    }
-    //margin: 20px;
-    height: 400px;
-    padding: 10px 20px;
-    //box-shadow: $elevation-2dp;
-    //border-radius: 2px;
-    //background: white;
-  }
 }

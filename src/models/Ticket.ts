@@ -3,7 +3,7 @@ import {autoserialize} from "cerialize"
 export enum TicketStatus {
   Writing   = 0,
   Editing   = 1,
-  Published = 2,
+  Published = 2
 }
 
 export interface TicketRequest {

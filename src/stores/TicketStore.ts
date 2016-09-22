@@ -1,4 +1,4 @@
-import {observable, action} from "mobx"
+import {observable, action, computed} from "mobx"
 import {AppStore} from "./AppStore"
 import {TicketService} from "../services/TicketService"
 import {Ticket} from "../models/Ticket"
@@ -23,10 +23,6 @@ export class TicketStore {
     this.ticketService = ticketService
   }
 
-  createTicket = async(): Promise<void> => {
-    console.log("Create ticket")
-  }
-
   @action setLoading = (loading: boolean) =>
     this.loading = loading
 
@@ -40,7 +36,7 @@ export class TicketStore {
       if (tickets === null)
         this.appStore.notify(t("tickets.notice"))
       else
-        setTimeout(() => this.receiveTickets(tickets), 0)
+        this.receiveTickets(tickets)
     } catch (error) {
       this.appStore.notify(error.toString())
     }
@@ -49,32 +45,27 @@ export class TicketStore {
   @action receiveTickets = (tickets: Array<Ticket>) => {
     this.initialised = true
     this.setLoading(false)
-    if (tickets.length < 10)
-      this.atEnd = true
     if (tickets.length > 0) {
-      console.log(tickets)
       this.tickets = tickets
     }
   }
 
-  getTickets = (): Array<Ticket> => {
-    if (!this.atEnd && this.tickets.length === 0)
-      this.fetchTickets()
-    return this.tickets
-  }
-
   @action pageUp = () => {
-    if (this.loading || this.atEnd)
+    if (this.page * 10 >= this.tickets.length - 1)
       return
     this.page += 1
-    this.fetchTickets()
+
+  }
+
+  @computed get currentTickets() {
+    let start = this.page * 10 - 10
+    return this.tickets.slice(start, start + 10)
   }
 
   @action pageDown = () => {
-    if (this.page > 1 && !this.loading) {
+    if (this.page > 1) {
       this.page -= 1
       this.atEnd = false
-      this.fetchTickets()
     }
   }
 

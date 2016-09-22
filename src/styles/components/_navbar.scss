@@ -114,18 +114,8 @@ nav {
 .action-menu.sticky {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 20;
   box-shadow: $elevation-2dp;
-}
-
-/* Transitions */
-
-.navbar-enter {
-  transform: translateY(-100%);
-}
-
-.navbar-enter.navbar-enter-active {
-  transform: none;
-  transition: transform 300ms ease-in-out;
 }

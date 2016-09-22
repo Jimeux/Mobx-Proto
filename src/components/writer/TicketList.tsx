@@ -1,5 +1,4 @@
 import * as React from "react"
-import * as Transition from "react-addons-css-transition-group"
 import {Component} from "react"
 import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
@@ -13,9 +12,12 @@ interface TicketListProps {
 
 @observer([TicketStore.Name, AppStore.Name])
 export class TicketList extends Component<TicketListProps, {}> {
+
+  componentDidMount = () => this.props.ticketStore.fetchTickets()
+
   render() {
-    const {initialised, loading, getTickets, page, pageUp, pageDown} = this.props.ticketStore
-    const tickets = getTickets().map(ticket =>
+    const {initialised, loading, currentTickets, page, pageUp, pageDown} = this.props.ticketStore
+    const tickets = currentTickets.map(ticket =>
       <TicketRow key={`ticket-${ticket.id}`}
                  ticket={ticket}
                  onClick={() => this.props.appStore.setPath(`/writer/articles/create/${ticket.id}`)} />)
@@ -52,11 +54,7 @@ export class TicketList extends Component<TicketListProps, {}> {
     return (
       <div>
         {!initialised ? <Loader /> : null}
-        <Transition transitionName="ticket-list"
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={300}>
-          {tickets.length > 0 ? ticketList : null}
-        </Transition>
+        {tickets.length > 0 ? ticketList : null}
       </div>
     )
   }
