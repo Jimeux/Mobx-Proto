@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export const SleekForm = (props) =>
+export const BoxForm = (props) =>
   <div className="login-form">
     <div className="header">
       <span>{props.title}</span>

@@ -3,7 +3,7 @@ import {Component} from "react"
 import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
 import {TicketFormStore} from "../../stores/TicketFormStore"
-import {SleekForm} from "../common/SleekForm"
+import {BoxForm} from "../common/SleekForm"
 
 interface TicketFormProps {
   readonly ticketFormStore: TicketFormStore
@@ -12,29 +12,31 @@ interface TicketFormProps {
 @observer([TicketFormStore.Name])
 export class TicketForm extends Component<TicketFormProps, {}> {
   render() {
-    const {applicationId, setApplicationId, comment, setComment, createTicket, invalid} = this.props.ticketFormStore
+    const {fields, update, createTicket, invalid} = this.props.ticketFormStore
+    const applicationId = fields.get("applicationId")
+    const comment = fields.get("comment")
 
     return (
-      <SleekForm title={t("ticket.create.title")}
-                 submit={t("ticket.create.submit")}
-                 onSubmit={createTicket}
-                 disabled={invalid}>
+      <BoxForm title={t("ticket.create.title")}
+               submit={t("ticket.create.submit")}
+               onSubmit={createTicket}
+               disabled={invalid}>
 
         <div className={`text-field ${applicationId.error ? "error" : ""}`}>
-          <label>{t("ticket.create.applicationId")} {applicationId.error}</label>
+          <label>{t("ticket.create.applicationId")}{applicationId.error}</label>
           <input type="number"
                  value={applicationId.value}
-                 onChange={(e) => setApplicationId((e.target as HTMLInputElement).value)}/>
+                 onChange={(e) => update("applicationId", (e.target as HTMLInputElement).value)}/>
         </div>
 
         <div className={`text-field ${comment.error ? "error" : ""}`}>
-          <label>{t("ticket.create.comment")} {comment.error}</label>
+          <label>{t("ticket.create.comment")}{comment.error}</label>
           <textarea rows={3}
                     value={comment.value}
-                    onChange={(e) => setComment((e.target as HTMLInputElement).value)}/>
+                    onChange={(e) => update("comment", (e.target as HTMLInputElement).value)}/>
         </div>
 
-      </SleekForm>
+      </BoxForm>
     )
   }
 }

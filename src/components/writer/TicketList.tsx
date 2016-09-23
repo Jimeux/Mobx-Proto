@@ -31,7 +31,7 @@ export class TicketList extends Component<TicketListProps, {}> {
         <div className="actions">
           <i className="material-icons">search</i>
           <i className="material-icons">filter_list</i>
-          <i className="material-icons">refresh</i>
+          <i className="material-icons" onClick={this.props.ticketStore.fetchTickets}>refresh</i>
         </div>
       </div>
 

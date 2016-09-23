@@ -80,10 +80,23 @@ const ja = {
       "dismiss": "非表示"
     },
 
+    "ticket": {
+      "create": {
+        "title": "チケット作成",
+        "submit": "作成",
+        "applicationId": "アプリ ID",
+        "comment": "コメント",
+        "success": "ID {{id}}のチケットが作成されました"
+      }
+    },
+
     "error": {
-      "too_short": "は{{min}}文字以上の値にしてください",
-      "too_long": "は{{max}}文字以下の値にしてください",
-      "alpha_num": "は半角英数字文 字または-_のみを入力してください"
+      "required": "は必須項目です",
+      "min_length": "は{{min}}文字以上の値にしてください",
+      "max_length": "は{{max}}文字以下の値にしてください",
+      "integer": "は整数にしてください",
+      "alpha_num": "は半角英数字文 字または-_のみを入力してください",
+      "unexpected": "予期しないエラーが発生しました"
     }
   }
 }
@@ -91,7 +104,7 @@ const ja = {
 i18next
   .use(LanguageDetector)
   .init({
-    lng: "en",
+    lng: "ja",
     fallbackLng: "en",
     resources: {
       "en": en,
