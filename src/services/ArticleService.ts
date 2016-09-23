@@ -1,5 +1,5 @@
 import {BaseService} from "./BaseService"
-import {ArticleJson, Article, Value, Content, ContentWithValues, ArticleWithContents} from "../models/Article"
+import {Article, Value, Content, ContentWithValues, ArticleWithContents} from "../models/Article"
 import {Deserialize} from "cerialize"
 import e = require("express")
 
@@ -15,7 +15,6 @@ export class ArticleService extends BaseService {
       content: Deserialize(contentWithValues.content, Content),
       values: <Array<Value>>contentWithValues.values.map(value => Deserialize(value, Value))
     }))
-
     return {article, contents} as ArticleWithContents
   }
 

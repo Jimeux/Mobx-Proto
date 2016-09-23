@@ -1,8 +1,5 @@
 import {autoserialize} from "cerialize"
 
-export interface ArticleJson extends Article {
-}
-
 export class Article {
   @autoserialize readonly id: number
   @autoserialize readonly applicationId: number

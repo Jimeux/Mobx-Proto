@@ -4,6 +4,7 @@ import {Router} from "react-router"
 import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
 import {ArticleFormStore} from "../../stores/ArticleFormStore"
+import {ContentWithValues} from "../../models/Article"
 
 interface ArticleFormProps {
   readonly articleFormStore: ArticleFormStore
@@ -39,13 +40,29 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
         <div className="body-wrapper">
           {this.renderActionMenu()}
           {this.renderForm()}
+          {this.renderContents()}
         </div>
       </div>
     )
   }
 
   getFormProps = () => {
+  }
 
+  renderContents = () => {
+    const store = this.props.articleFormStore
+    const contents = store.contents
+    if (contents.length <= 0)
+      return null
+
+    const wivContent = contents[0]
+    const content = wivContent.content
+    const value = wivContent.values[0]
+
+    return <Text content={content}
+                 value={value}
+                 error=""
+                 onChange={(e) => store.updateContent(content.id, value.id, (e.target as HTMLInputElement).value)}/>
   }
 
   renderActionMenu = () =>
@@ -105,6 +122,12 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
     </div>
 
 }
+
+const Text = ({content, value, error, onChange}) =>
+  <div className={`text-field ${error ? "error" : ""}`}>
+    <label>Text {error}</label>
+    <textarea value={value.value} rows={5} onChange={onChange}/>
+  </div>
 
 const TextField = ({type, label, error, onChange}) =>
   <div className={`text-field ${error ? "error" : ""}`}>

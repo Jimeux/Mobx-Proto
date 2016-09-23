@@ -59,7 +59,7 @@ export class Field {
   }
 }
 
-export class Submittable {
+export abstract class Submittable {
 
   @observable loading = false
   @observable private initialised = false
