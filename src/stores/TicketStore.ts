@@ -62,6 +62,10 @@ export class TicketStore {
     return this.tickets.slice(start, start + 10)
   }
 
+  @computed get size() {
+    return this.tickets.length
+  }
+
   @action pageDown = () => {
     if (this.page > 1) {
       this.page -= 1

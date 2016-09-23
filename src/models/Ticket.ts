@@ -12,6 +12,9 @@ export interface TicketRequest {
   comment: string | null
 }
 
+export interface TicketJson extends Ticket {
+}
+
 export class Ticket {
   @autoserialize readonly id: number
   @autoserialize readonly applicationId: number

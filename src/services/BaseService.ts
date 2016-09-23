@@ -30,7 +30,7 @@ export abstract class BaseService {
   }
 
   private getUrl(path: string): string {
-    return `${BaseService.Endpoint}/${this.BasePath}${path === "/" ? "" : "/" + path}`
+    return `${BaseService.Endpoint}/${this.BasePath}${path === "/" ? "" : path}`
   }
 
 }

@@ -6,14 +6,18 @@ import {AppStore} from "./stores/AppStore"
 import {LoginFormStore} from "./stores/LoginFormStore"
 import {TicketStore} from "./stores/TicketStore"
 import {TicketFormStore} from "./stores/TicketFormStore"
-import {ArticleStore} from "./stores/ArticleStore"
+import {ArticleFormStore} from "./stores/ArticleFormStore"
+import {ArticleService} from "./services/ArticleService"
 
 const ticketService = new TicketService()
+const articleService = new ArticleService()
 
 const appStore = new AppStore(browserHistory)
-const articleStore = new ArticleStore()
+const articleFormStore = new ArticleFormStore(appStore, articleService)
 const ticketFormStore = new TicketFormStore(appStore, ticketService)
 const loginFormStore = new LoginFormStore(appStore)
 const ticketStore = new TicketStore(appStore, ticketService)
 
-export const stores = {appStore, articleStore, loginFormStore, ticketStore, ticketFormStore}
+export const stores = {
+  appStore, articleFormStore, loginFormStore, ticketStore, ticketFormStore
+}

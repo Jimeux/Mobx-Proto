@@ -1,5 +1,5 @@
 import {BaseService} from "./BaseService"
-import {Ticket} from "../models/Ticket"
+import {Ticket, TicketJson} from "../models/Ticket"
 import {Deserialize} from "cerialize"
 
 export class TicketService extends BaseService {
@@ -7,7 +7,7 @@ export class TicketService extends BaseService {
   protected readonly BasePath: string = "tickets"
 
   async get(id: number): Promise<Ticket> {
-    const response = await this.getRequest(`${id}`)
+    const response = await this.getRequest(`/${id}`)
     const ticketJson = await response.json()
     return Deserialize(ticketJson, Ticket)
   }
@@ -17,7 +17,7 @@ export class TicketService extends BaseService {
   }
 
   async index (page: number): Promise<Array<Ticket>> {
-    const response = await this.getRequest(`status/0`)
+    const response = await this.getRequest(`/status/0`)
     const ticketsJson = await response.json()
     return ticketsJson.map(ticket => Deserialize(ticket, Ticket))
   }

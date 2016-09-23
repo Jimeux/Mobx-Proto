@@ -1,4 +1,4 @@
-import {observable, action, asMap} from "mobx"
+import {observable, asMap} from "mobx"
 import {AppStore} from "./AppStore"
 import {TicketService} from "../services/TicketService"
 import {TicketRequest} from "../models/Ticket"
@@ -11,7 +11,7 @@ export class TicketFormStore extends Submittable {
   public static readonly Name: string = "ticketFormStore"
 
   @observable fields = asMap({
-    applicationId: Field.create([Rules.required, Rules.integer]),
+    applicationId: Field.create([Rules.required, Rules.positiveInt]),
     comment: Field.create([Rules.maxLength(300)])
   })
 
@@ -21,6 +21,7 @@ export class TicketFormStore extends Submittable {
   }
 
   createTicket = async(): Promise<void> => {
+    this.setLoading(true)
     const response = await this.ticketService.create(this.toJson())
 
     if (response == null || response.status > 400)
@@ -34,6 +35,7 @@ export class TicketFormStore extends Submittable {
         this.appStore.notify(JSON.stringify(json))
       }
     }
+    this.setLoading(false)
   }
 
   private toJson = (): TicketRequest => ({

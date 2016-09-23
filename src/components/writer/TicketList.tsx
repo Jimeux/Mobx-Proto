@@ -4,6 +4,7 @@ import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
 import {TicketStore} from "../../stores/TicketStore"
 import {AppStore} from "../../stores/AppStore"
+import {Loader} from "../../components/common/Loader"
 
 interface TicketListProps {
   readonly appStore: AppStore
@@ -16,7 +17,7 @@ export class TicketList extends Component<TicketListProps, {}> {
   componentDidMount = () => this.props.ticketStore.fetchTickets()
 
   render() {
-    const {initialised, loading, currentTickets, page, pageUp, pageDown} = this.props.ticketStore
+    const {initialised, loading, currentTickets, page, pageUp, pageDown, size} = this.props.ticketStore
     const tickets = currentTickets.map(ticket =>
       <TicketRow key={`ticket-${ticket.id}`}
                  ticket={ticket}
@@ -45,7 +46,7 @@ export class TicketList extends Component<TicketListProps, {}> {
             <table>
               <TicketHeader/>
               <tbody>{tickets}</tbody>
-              <TicketFooter pageUp={pageUp} pageDown={pageDown} page={page}/>
+              <TicketFooter pageUp={pageUp} pageDown={pageDown} page={page} size={size}/>
             </table>
           </div>
         </div>
@@ -85,7 +86,7 @@ const TicketRow = ({ticket, onClick}) =>
     <td>{ticket.comment}</td>
   </tr>
 
-const TicketFooter = ({page, pageUp, pageDown}) =>
+const TicketFooter = ({page, pageUp, pageDown, size}) =>
   <tfoot>
   <tr>
     <td colSpan={5}>
@@ -95,14 +96,7 @@ const TicketFooter = ({page, pageUp, pageDown}) =>
       <span className="page-icon" onClick={pageDown}>
         <i className="material-icons">chevron_left</i>
       </span>
-      <span className="count-info">{page * 10 - 10 + 1}-{page * 10} of 100</span>
+      <span className="count-info">{page * 10 - 10 + 1}-{page * 10 >= size ? size : page * 10} of {size}</span>
     </td>
   </tr>
   </tfoot>
-
-const Loader = () =>
-  <div className="loader">
-    <div className="img-wrapper">
-      <img src="/public/images/loader.svg"/>
-    </div>
-  </div>
