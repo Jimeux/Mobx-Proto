@@ -10,10 +10,10 @@ export class TicketFormStore extends Submittable<Field> {
 
   public static readonly Name: string = "ticketFormStore"
 
-  @observable fields = asMap({
-    applicationId: Field.create(t("ticket.create.applicationId"), [Rules.required, Rules.positiveInt]),
-    comment: Field.create(t("ticket.create.comment"), [Rules.maxLength(300)])
-  })
+  @observable fields = [
+    Field.create(t("ticket.create.applicationId"), [Rules.required, Rules.positiveInt]),
+    Field.create(t("ticket.create.comment"), [Rules.maxLength(300)])
+  ]
 
   constructor(private appStore: AppStore,
               private ticketService: TicketService) {
@@ -39,9 +39,9 @@ export class TicketFormStore extends Submittable<Field> {
   }
 
   private toJson = (): TicketRequest => ({
-    applicationId: parseInt(this.fields.get("applicationId").value),
+    applicationId: parseInt(this.fields[0].value),
     langCode: this.appStore.langCode,
-    comment: this.fields.get("comment").value
+    comment: this.fields[1].value
   }) as TicketRequest
 
 }

@@ -11,10 +11,9 @@ interface LoginFormProps {
 
 @observer([LoginFormStore.Name])
 export class LoginForm extends Component<LoginFormProps, {}> {
+
   render() {
-    const store = this.props.loginFormStore
-    const username = store.fields.get("username")
-    const password = store.fields.get("password")
+    const {fields, invalid, login} = this.props.loginFormStore
 
     return (
       <div className="login-form">
@@ -22,10 +21,11 @@ export class LoginForm extends Component<LoginFormProps, {}> {
           <span className="secondary">APPLIV</span><span>CLOUD</span>
         </div>
         <div className="body">
-          <TextField field={username}/>
-          <TextField field={password}/>
+
+          {fields.map((field, i) => <TextField key={i} field={field}/>)}
+
           <div className="submit">
-            <button onClick={store.login} disabled={store.invalid}>
+            <button onClick={login} disabled={invalid}>
               {t("login.submit")}
             </button>
           </div>
@@ -33,4 +33,5 @@ export class LoginForm extends Component<LoginFormProps, {}> {
       </div>
     )
   }
+
 }

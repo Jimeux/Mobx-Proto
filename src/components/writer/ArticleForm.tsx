@@ -3,8 +3,8 @@ import {Component} from "react"
 import {Router} from "react-router"
 import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
+import {TextField} from "../../components/common/form/TextField"
 import {ArticleFormStore} from "../../stores/ArticleFormStore"
-import {ContentWithValues} from "../../models/Article"
 
 interface ArticleFormProps {
   readonly articleFormStore: ArticleFormStore
@@ -56,9 +56,7 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
 
     const [field, ...rest] = store.fields
 
-    return <Text value={field.value}
-                 error={field.error}
-                 onChange={field.update}/>
+    return <TextField field={field}/>
   }
 
   renderActionMenu = () =>
@@ -80,7 +78,7 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
       <section>
         <span className="heading">Introductory Article</span>
 
-        <TextField type="text"
+        {/*<TextField type="text"
                    label="Title"
                    error={""}
                    onChange={(e) => {}}/>
@@ -88,13 +86,13 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
         <TextAreaField label="Review"
                        error={""}
                        rows={5}
-                       onChange={() => {}}/>
+                       onChange={() => {}}/>*/}
 
       </section>
 
       <section>
         <span className="heading">Recommended Points</span>
-        <TextField type="text"
+        {/*<TextField type="text"
                    label="Point 1"
                    error={""}
                    onChange={(e) => {}}/>
@@ -105,7 +103,7 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
         <TextField type="text"
                    label="Point 3"
                    error={""}
-                   onChange={(e) => {}}/>
+                   onChange={(e) => {}}/>*/}
       </section>
 
       <section>
@@ -123,16 +121,4 @@ const Text = ({value, error, onChange}) =>
   <div className={`text-field ${error ? "error" : ""}`}>
     <label>Text {error}</label>
     <textarea value={value.value} rows={5} onChange={onChange}/>
-  </div>
-
-const TextField = ({type, label, error, onChange}) =>
-  <div className={`text-field ${error ? "error" : ""}`}>
-    <label>{label}{error}</label>
-    <input type={type} onChange={onChange}/>
-  </div>
-
-const TextAreaField = ({label, error, onChange, rows = 4}) =>
-  <div className={`textarea-field ${error ? "error" : ""}`}>
-    <label>{label}{error}</label>
-    <textarea onChange={onChange} rows={rows}/>
   </div>

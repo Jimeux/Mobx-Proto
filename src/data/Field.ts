@@ -18,14 +18,13 @@ export class Field {
         .length > 0
   }
 
-  static hasErrors(fields: ObservableMap<Field>): boolean {
+  static hasErrors(fields: Array<Field>): boolean {
     return fields
-        .values()
         .map(Field.hasError)
         .indexOf(true) >= 0
   }
 
-  static resetAll(fields: ObservableMap<Field>) {
+  static resetAll(fields: Array<Field>) {
     fields.forEach(field => field.reset())
   }
 
@@ -72,7 +71,7 @@ export abstract class Submittable<T extends Field> {
   @observable loading = false
   //@observable private initialised = false
 
-  fields: ObservableMap<T>
+  fields: Array<T>
 
   @action setLoading = (loading: boolean) =>
     this.loading = loading

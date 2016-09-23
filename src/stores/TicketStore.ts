@@ -51,7 +51,7 @@ export class TicketStore {
   }
 
   @action pageUp = () => {
-    if (this.page * 10 >= this.tickets.length - 1)
+    if (this.page * 10 > this.tickets.length - 1)
       return
     this.page += 1
 

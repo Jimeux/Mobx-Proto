@@ -14,27 +14,18 @@ interface TicketFormProps {
 @observer([TicketFormStore.Name])
 export class TicketForm extends Component<TicketFormProps, {}> {
 
-  private store: TicketFormStore = this.props.ticketFormStore
-
   render() {
-    return this.store.loading ? <Loader /> : this.renderForm(this.formProps)
+    const {loading, createTicket, disabled, fields} = this.props.ticketFormStore
+    return loading ? <Loader /> : this.renderForm(createTicket, disabled, fields)
   }
 
-  get formProps() {
-    const {fields, createTicket, disabled} = this.store
-    const applicationId = fields.get("applicationId")
-    const comment = fields.get("comment")
-    return {createTicket, disabled, applicationId, comment}
-  }
-
-  renderForm = (props) =>
+  renderForm = (createTicket, disabled, fields) =>
     <BoxForm title={t("ticket.create.title")}
              submit={t("ticket.create.submit")}
-             onSubmit={props.createTicket}
-             disabled={props.disabled}>
+             onSubmit={createTicket}
+             disabled={disabled}>
 
-      <TextField field={props.applicationId}/>
-      <TextField field={props.comment}/>
+      {fields.map((field, i) => <TextField key={i} field={field}/>)}
 
     </BoxForm>
 
