@@ -1,10 +1,11 @@
 import {ObservableMap, extendObservable, action, computed, observable} from "mobx"
 
 export interface Field {
+  label: string
   rules: Array<(s: string) => string | null>
   value: string
   error: string | null
-  update: (s: string) => void
+  update: () => void
   reset: () => void
 }
 
@@ -18,64 +19,66 @@ export class Field {
   }
 
   static hasErrors(fields: ObservableMap<Field>): boolean {
-    const dude = fields
+    return fields
         .values()
         .map(Field.hasError)
-
-    console.log(dude)
-    return dude.indexOf(true) >= 0
+        .indexOf(true) >= 0
   }
 
   static resetAll(fields: ObservableMap<Field>) {
     fields.forEach(field => field.reset())
   }
 
-  static create = (rules, initialValue: string = ""): Field => {
-    let field = {
+  static create = <T extends Field>(label: string,
+                                    rules: Array<(s: string) => string | null>,
+                                    base: any = {},
+                                    initialValue: string = ""): T => {
+    const field = {
+      label,
       rules,
       value: "",
       error: null
     }
 
-    extendObservable(field, {
+    let obj = Object.assign(field, base)
+
+    extendObservable(obj, {
         value: initialValue,
 
-        update: action(((value: string) => {
-          const error = field.rules
+        update: action(((e: Event) => {
+          const value = (e.target as HTMLInputElement).value
+          const error = obj.rules
               .map(validate => validate(value))
               .filter(result => result != null)
               .shift() || null
 
-          field = Object.assign(field, {value, error})
+          obj = Object.assign(obj, {value, error})
+          return false
         })),
 
         reset: action(() => {
-          field.value = initialValue
-          field.error = null
+          obj.value = initialValue
+          obj.error = null
         })
       }
     )
-    return field as Field
+
+    return obj as T
   }
 }
 
-export abstract class Submittable {
+export abstract class Submittable<T extends Field> {
 
   @observable loading = false
-  @observable private initialised = false
+  //@observable private initialised = false
 
-  fields: ObservableMap<Field>
-
-  @action update = (field: string, value: string) => {
-    this.initialised = true
-    this.fields.get(field).update(value)
-  }
+  fields: ObservableMap<T>
 
   @action setLoading = (loading: boolean) =>
     this.loading = loading
 
   @action reset = () => {
-    this.initialised = false
+    //this.initialised = false
     Field.resetAll(this.fields)
   }
 
@@ -84,7 +87,8 @@ export abstract class Submittable {
   }
 
   @computed get disabled(): boolean {
-    return !this.initialised || this.invalid || this.loading
+    //return !this.initialised || this.invalid || this.loading
+    return this.invalid || this.loading
   }
 
 }

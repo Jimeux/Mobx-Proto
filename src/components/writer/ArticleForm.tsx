@@ -51,18 +51,14 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
 
   renderContents = () => {
     const store = this.props.articleFormStore
-    const contents = store.contents
-    if (contents.length <= 0)
+    if (store.fields.length <= 0)
       return null
 
-    const wivContent = contents[0]
-    const content = wivContent.content
-    const value = wivContent.values[0]
+    const [field, ...rest] = store.fields
 
-    return <Text content={content}
-                 value={value}
-                 error=""
-                 onChange={(e) => store.updateContent(content.id, value.id, (e.target as HTMLInputElement).value)}/>
+    return <Text value={field.value}
+                 error={field.error}
+                 onChange={field.update}/>
   }
 
   renderActionMenu = () =>
@@ -123,7 +119,7 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
 
 }
 
-const Text = ({content, value, error, onChange}) =>
+const Text = ({value, error, onChange}) =>
   <div className={`text-field ${error ? "error" : ""}`}>
     <label>Text {error}</label>
     <textarea value={value.value} rows={5} onChange={onChange}/>

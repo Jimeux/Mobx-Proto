@@ -6,13 +6,13 @@ import {t} from "../i18n/i18n"
 import {Field, Submittable} from "../data/Field"
 import {Rules} from "../data/Rules"
 
-export class TicketFormStore extends Submittable {
+export class TicketFormStore extends Submittable<Field> {
 
   public static readonly Name: string = "ticketFormStore"
 
   @observable fields = asMap({
-    applicationId: Field.create([Rules.required, Rules.positiveInt]),
-    comment: Field.create([Rules.maxLength(300)])
+    applicationId: Field.create(t("ticket.create.applicationId"), [Rules.required, Rules.positiveInt]),
+    comment: Field.create(t("ticket.create.comment"), [Rules.maxLength(300)])
   })
 
   constructor(private appStore: AppStore,

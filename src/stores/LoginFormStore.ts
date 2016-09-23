@@ -6,15 +6,15 @@ import {Deserialize, Serialize} from "cerialize"
 import {Submittable, Field} from "../data/Field"
 import {Rules} from "../data/Rules"
 
-export class LoginFormStore extends Submittable {
+export class LoginFormStore extends Submittable<Field> {
 
   public static readonly Name: string = "loginFormStore"
 
   @observable failed: boolean = false
 
   @observable fields = asMap({
-    username: Field.create([Rules.required, Rules.minLength(4), Rules.alphaNum]),
-    password: Field.create([Rules.required, Rules.minLength(4)])
+    username: Field.create(t("login.username"), [Rules.required, Rules.minLength(4), Rules.alphaNum]),
+    password: Field.create(t("login.password"), [Rules.required, Rules.minLength(4)])
   })
 
   constructor(private appStore: AppStore) {

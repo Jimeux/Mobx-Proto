@@ -4,18 +4,23 @@ import {t} from "../i18n/i18n"
 import {ArticleService} from "../services/ArticleService"
 import {Submittable, Field} from "../data/Field"
 import {AppStore} from "./AppStore"
-import {Article, ArticleWithContents, Value, ContentWithValues} from "../models/Article"
+import {Article, ArticleWithContents, Value, Content} from "../models/Article"
+import {Rules} from "../data/Rules"
 
-export class ArticleFormStore extends Submittable {
+export interface ContentValueField extends Value, Field {}
+
+export class ArticleFormStore {
 
   public static readonly Name: string = "articleFormStore"
 
-  @observable article: Article
-  @observable contents: Array<ContentWithValues> = []
+  private article: Article
+  private contents: Array<Content> = []
+
+  @observable fields: Array<ContentValueField> = []
 
   constructor(private appStore: AppStore,
               private articleService: ArticleService) {
-    super()
+    //super()
   }
 
   fetchArticle = async(id: number): Promise<void> => {
@@ -32,6 +37,7 @@ export class ArticleFormStore extends Submittable {
   }
 
   @action updateContent = (contentId: number, valueId: number, value: string) => {
+/*
     const contentIndex = this.contents.findIndex(c => c.content.id === contentId)
     const content = this.contents[contentIndex]
 
@@ -40,13 +46,18 @@ export class ArticleFormStore extends Submittable {
 
     content.values[valueIndex] = Object.assign({}, contentValue, {value})
     this.contents[contentIndex] = content
+*/
   }
 
   @action receiveArticle = (articleWithContents: ArticleWithContents) => {
-    //this.appStore.notify(`Fetched article with ID ${articleWithContents.contents}`)
     this.article = articleWithContents.article
 
-    articleWithContents.contents.forEach(aws => this.contents.push(aws))
+    this.contents = articleWithContents.contents
+      .map(contentWithValues => contentWithValues.content)
+
+    this.fields = articleWithContents.contents
+      .map(contentWithValues => contentWithValues.values)
+      .map(value => Field.create("shit", [Rules.required, Rules.minLength(10)], value) as ContentValueField)
   }
 }
 

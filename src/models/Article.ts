@@ -38,7 +38,7 @@ export class Value {
   @autoserialize readonly id: number
   @autoserialize readonly communitiesArticlesContentId: number
   @autoserialize readonly key: string
-  @autoserialize readonly value: string
+  @autoserialize value: string
   @autoserialize readonly position: number
 
   constructor(id: number, communitiesArticlesContentId: number,
@@ -49,7 +49,6 @@ export class Value {
     this.value = value
     this.position = position
   }
-
 }
 
 export interface ArticleWithContents {
