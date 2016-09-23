@@ -3,18 +3,18 @@ import {Component} from "react"
 import {Link} from "react-router"
 import {t} from "../i18n/i18n"
 import {AppStore} from "../stores/AppStore"
-import {SessionStore} from "../stores/SessionStore"
+import {LoginFormStore} from "../stores/LoginFormStore"
 import {UserMenu} from "./common/UserMenu"
 
 interface NavbarProps {
   readonly appStore: AppStore
-  readonly sessionStore: SessionStore
+  readonly loginFormStore: LoginFormStore
 }
 
 export class Navbar extends Component<NavbarProps, {}> {
   render() {
     const {currentUser, switchLocale, locale, openMenu} = this.props.appStore
-    const {logout} = this.props.sessionStore
+    const {logout} = this.props.loginFormStore
 
     return (
       <div>

@@ -1,17 +1,19 @@
 import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
-import {SessionStore} from "../../stores/SessionStore"
+import {LoginFormStore} from "../../stores/LoginFormStore"
 import {t} from "../../i18n/i18n"
 
 interface LoginFormProps {
-  sessionStore: SessionStore
+  loginFormStore: LoginFormStore
 }
 
-@observer([SessionStore.Name])
+@observer([LoginFormStore.Name])
 export class LoginForm extends Component<LoginFormProps, {}> {
   render() {
-    const store = this.props.sessionStore
+    const store = this.props.loginFormStore
+    const username = store.fields.get("username")
+    const password = store.fields.get("password")
 
     return (
       <div className="login-form">
@@ -23,16 +25,18 @@ export class LoginForm extends Component<LoginFormProps, {}> {
         <div className="body">
           <TextField type="text"
                      label={t("login.username")}
-                     error={store.errorFor("username")}
-                     onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
+                     value={username.value}
+                     error={username.error}
+                     onChange={(e) => store.update("username", (e.target as HTMLInputElement).value)}/>
 
           <TextField type="password"
                      label={t("login.password")}
-                     error={store.errorFor("password")}
-                     onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
+                     value={password.value}
+                     error={password.error}
+                     onChange={(e) => store.update("password", (e.target as HTMLInputElement).value)}/>
 
           <div className="submit">
-            <button onClick={() => store.login()} disabled={!store.isValid()}>
+            <button onClick={store.login} disabled={store.invalid}>
               {t("login.submit")}
             </button>
           </div>
@@ -43,8 +47,8 @@ export class LoginForm extends Component<LoginFormProps, {}> {
   }
 }
 
-const TextField = ({type, label, error, onChange}) =>
+const TextField = ({type, label, error, onChange, value}) =>
   <div className={`text-field ${error ? "error" : ""}`}>
     <label>{label}{error}</label>
-    <input type={type} onChange={onChange}/>
+    <input type={type} onChange={onChange} value={value}/>
   </div>

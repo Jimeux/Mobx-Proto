@@ -2,13 +2,13 @@ import * as React from "react"
 import {Component} from "react"
 import {Router} from "react-router"
 import {observer} from "mobx-react"
-import {SessionStore} from "../../stores/SessionStore"
+import {LoginFormStore} from "../../stores/LoginFormStore"
 import {t} from "../../i18n/i18n"
 import {ArticleStore} from "../../stores/ArticleStore"
 
 interface ArticleFormProps {
   readonly articleStore: ArticleStore
-  readonly sessionStore: SessionStore
+  readonly loginFormStore: LoginFormStore
   readonly params: Router.Params
 }
 
@@ -16,7 +16,7 @@ interface ArticleFormState {
   sticky: boolean
 }
 
-@observer([SessionStore.Name, ArticleStore.Name])
+@observer([LoginFormStore.Name, ArticleStore.Name])
 export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
 
   constructor(props: ArticleFormProps) {
@@ -33,7 +33,7 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
   componentWillUnmount = () => window.removeEventListener("scroll", this.handleScroll)
 
   render() {
-    const store = this.props.sessionStore
+    const store = this.props.loginFormStore
     const stickyClass = this.state.sticky ? "sticky" : ""
 
     const actionMenu =
@@ -58,7 +58,7 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
             <section>
               <span className="heading">Introductory Article</span>
 
-              <TextField type="text"
+            {/*  <TextField type="text"
                          label="Title"
                          error={store.errorFor("username")}
                          onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
@@ -66,12 +66,12 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
               <TextAreaField label="Review"
                              error={store.errorFor("password")}
                              rows={10}
-                             onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>
+                             onChange={(e) => store.setPassword((e.target as HTMLInputElement).value)}/>*/}
 
             </section>
 
             <section>
-              <span className="heading">Recommended Points</span>
+             {/* <span className="heading">Recommended Points</span>
               <TextField type="text"
                          label="Point 1"
                          error={store.errorFor("username")}
@@ -83,14 +83,14 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
               <TextField type="text"
                          label="Point 3"
                          error={store.errorFor("username")}
-                         onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>
+                         onChange={(e) => store.setUsername((e.target as HTMLInputElement).value)}/>*/}
             </section>
 
             <section>
               <div className="submit">
-                <button onClick={() => store.login()} disabled={!store.isValid()}>
+                {/*<button onClick={() => store.login()} disabled={!store.isValid()}>
                   Submit
-                </button>
+                </button>*/}
               </div>
             </section>
           </div>

@@ -2,12 +2,16 @@ import {t} from "../i18n/i18n"
 
 export class Rules {
 
-  static integer(value: string | null) {
-    return (value == null || isNaN(parseInt(value))) ? t("error.integer") : null
+  static integer(s: string | null) {
+    return (s == null || isNaN(parseInt(s))) ? t("error.integer") : null
   }
 
-  static required(value: string | null) {
-    return (value == null || value.length <= 0) ? t("error.required") : null
+  static required(s: string | null) {
+    return (s == null || s.length <= 0) ? t("error.required") : null
+  }
+
+  static alphaNum(s: string) {
+    return !(!!s.match(/^[_\-\w]+$/)) ? t("error.alpha_num") : null
   }
 
   static minLength(min: number) {
