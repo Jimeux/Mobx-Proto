@@ -14,7 +14,9 @@ interface TicketListProps {
 @observer([TicketStore.Name, AppStore.Name])
 export class TicketList extends Component<TicketListProps, {}> {
 
-  componentDidMount = () => this.props.ticketStore.fetchTickets()
+  componentDidMount() {
+    this.props.ticketStore.fetchTickets()
+  }
 
   render() {
     const {initialised, loading, currentTickets, page, pageUp, pageDown, size} = this.props.ticketStore
@@ -46,7 +48,7 @@ export class TicketList extends Component<TicketListProps, {}> {
             <table>
               <TicketHeader/>
               <tbody>{tickets}</tbody>
-              <TicketFooter pageUp={pageUp} pageDown={pageDown} page={page} size={size}/>
+              <TicketFooter pageUp={pageUp} pageDown={pageDown} page={page} count={size}/>
             </table>
           </div>
         </div>
@@ -68,12 +70,12 @@ const TicketHeader = () =>
       <span className="sort-icon">
         <i className="material-icons">arrow_upward</i>
       </span>
-      <span className="name">ID</span>
+      <span className="name">{t("ticket.index.id")}</span>
     </th>
-    <th>App ID</th>
-    <th>Article ID</th>
-    <th>Status</th>
-    <th>Comment</th>
+    <th>{t("ticket.index.app_id")}</th>
+    <th>{t("ticket.index.article_id")}</th>
+    <th>{t("ticket.index.status")}</th>
+    <th>{t("ticket.index.comment")}</th>
   </tr>
   </thead>
 
@@ -86,7 +88,7 @@ const TicketRow = ({ticket, onClick}) =>
     <td>{ticket.comment}</td>
   </tr>
 
-const TicketFooter = ({page, pageUp, pageDown, size}) =>
+const TicketFooter = ({page, pageUp, pageDown, count}) =>
   <tfoot>
   <tr>
     <td colSpan={5}>
@@ -96,7 +98,13 @@ const TicketFooter = ({page, pageUp, pageDown, size}) =>
       <span className="page-icon" onClick={pageDown}>
         <i className="material-icons">chevron_left</i>
       </span>
-      <span className="count-info">{page * 10 - 10 + 1}-{page * 10 >= size ? size : page * 10} of {size}</span>
+      <span className="count-info">
+        {t("ticket.index.page_info", {
+          from: (page * 10 - 10 + 1),
+          to: (page * 10 >= count ? count : page * 10),
+          count
+        })}
+      </span>
     </td>
   </tr>
   </tfoot>

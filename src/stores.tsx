@@ -13,7 +13,7 @@ const ticketService = new TicketService()
 const articleService = new ArticleService()
 
 const appStore = new AppStore(browserHistory)
-const articleFormStore = new ArticleFormStore(appStore, articleService)
+const articleFormStore = new ArticleFormStore(appStore, ticketService, articleService)
 const ticketFormStore = new TicketFormStore(appStore, ticketService)
 const loginFormStore = new LoginFormStore(appStore)
 const ticketStore = new TicketStore(appStore, ticketService)

@@ -1,20 +1,20 @@
 @import "palette";
 @import "../vendor/bootstrap/variables";
 
-$color50:   nth($paletteBlue, 1);
-$color100:  nth($paletteBlue, 2);
-$color200:  nth($paletteBlue, 3);
-$color300:  nth($paletteBlue, 4);
-$color400:  nth($paletteBlue, 5);
-$color500:  nth($paletteBlue, 6);
-$color600:  nth($paletteBlue, 7);
-$color700:  nth($paletteBlue, 8);
-$color800:  nth($paletteBlue, 9);
-$color900:  nth($paletteBlue, 10);
-$colorA100: nth($paletteBlue, 11);
-$colorA200: nth($paletteBlue, 12);
-$colorA400: nth($paletteBlue, 13);
-$colorA700: nth($paletteBlue, 14);
+$color50:   nth($paletteIndigo, 1);
+$color100:  nth($paletteIndigo, 2);
+$color200:  nth($paletteIndigo, 3);
+$color300:  nth($paletteIndigo, 4);
+$color400:  nth($paletteIndigo, 5);
+$color500:  nth($paletteIndigo, 6);
+$color600:  nth($paletteIndigo, 7);
+$color700:  nth($paletteIndigo, 8);
+$color800:  nth($paletteIndigo, 9);
+$color900:  nth($paletteIndigo, 10);
+$colorA100: nth($paletteIndigo, 11);
+$colorA200: nth($paletteIndigo, 12);
+$colorA400: nth($paletteIndigo, 13);
+$colorA700: nth($paletteIndigo, 14);
 
 $elevation-2dp: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
 0 3px 1px -2px rgba(0, 0, 0, 0.2),

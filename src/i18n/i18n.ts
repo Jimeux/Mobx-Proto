@@ -9,7 +9,11 @@ const en = {
   "translation": {
     "nav": {
       "brand": "Appliv Cloud",
-      "message": "You're logged in as {{title}}"
+      "message": "You're logged in as {{title}}",
+      "user_menu": {
+        "settings": "Settings",
+        "log_out": "Log out"
+      }
     },
 
     "login": {
@@ -39,6 +43,23 @@ const en = {
         "applicationId": "Application ID",
         "comment": "Comment",
         "success": "Ticket created with ID {{id}}"
+      },
+      "index": {
+        "id": "ID",
+        "app_id": "App ID",
+        "article_id": "Article ID",
+        "status": "Status",
+        "comment": "Comment",
+        "page_info": "{{from}}-{{to}} of {{count}}"
+      }
+    },
+
+    "article": {
+      "write": {
+        "write_article": "Write article",
+        "points": "Recommended Points",
+        "intro_article": "Introductory article",
+        "submit": "Submit"
       }
     },
 
@@ -57,7 +78,11 @@ const ja = {
   "translation": {
     "nav": {
       "brand": "アプリヴクラウド",
-      "message": "{{title}}としてログインしています"
+      "message": "{{title}}としてログインしています",
+      "user_menu": {
+        "settings": "設定",
+        "log_out": "ログアウト"
+      }
     },
 
     "login": {
@@ -87,16 +112,33 @@ const ja = {
         "applicationId": "アプリ ID",
         "comment": "コメント",
         "success": "ID {{id}}のチケットが作成されました"
+      },
+      "index": {
+        "id": "ID",
+        "app_id": "アプリID",
+        "article_id": "記事ID",
+        "status": "ステータス",
+        "comment": "コメント",
+        "page_info": "{{from}}-{{to}} of {{count}}"
+      }
+    },
+
+    "article": {
+      "write": {
+        "write_article": "記事を書く",
+        "points": "おすすめポイント",
+        "intro_article": "紹介記事",
+        "submit": "提出"
       }
     },
 
     "error": {
-      "required": "は必須項目です",
-      "min_length": "は{{min}}文字以上の値にしてください",
-      "max_length": "は{{max}}文字以下の値にしてください",
-      "integer": "は整数にしてください",
-      "positive_int": "は正の整数でなければならない",
-      "alpha_num": "は半角英数字文 字または-_のみを入力してください",
+      "required": "必須項目です",
+      "min_length": "{{min}}文字以上の値にしてください",
+      "max_length": "{{max}}文字以下の値にしてください",
+      "integer": "整数にしてください",
+      "positive_int": "正の整数でなければならない",
+      "alpha_num": "半角英数字文 字または-_のみを入力してください",
       "unexpected": "予期しないエラーが発生しました"
     }
   }

@@ -29,6 +29,22 @@ export abstract class BaseService {
     }
   }
 
+  protected async putRequest(path: string, data: any): Promise<Response | null> {
+    try {
+      return await fetch(this.getUrl(path), {
+        headers: {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        method: "PUT",
+        body: data
+      })
+    } catch (e) {
+      console.log(e)
+      return null
+    }
+  }
+
   private getUrl(path: string): string {
     return `${BaseService.Endpoint}/${this.BasePath}${path === "/" ? "" : path}`
   }

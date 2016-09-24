@@ -1,4 +1,4 @@
-import {observable, asMap} from "mobx"
+import {observable, asMap, ObservableMap} from "mobx"
 import {AppStore} from "./AppStore"
 import {TicketService} from "../services/TicketService"
 import {TicketRequest} from "../models/Ticket"
@@ -10,10 +10,10 @@ export class TicketFormStore extends Submittable<Field> {
 
   public static readonly Name: string = "ticketFormStore"
 
-  @observable fields = [
-    Field.create(t("ticket.create.applicationId"), [Rules.required, Rules.positiveInt]),
-    Field.create(t("ticket.create.comment"), [Rules.maxLength(300)])
-  ]
+  @observable fields: ObservableMap<Field> = asMap({
+    applicationId: Field.create(t("ticket.create.applicationId"), [Rules.required, Rules.positiveInt]),
+    comment: Field.create(t("ticket.create.comment"), [Rules.maxLength(300)])
+  })
 
   constructor(private appStore: AppStore,
               private ticketService: TicketService) {
@@ -22,7 +22,7 @@ export class TicketFormStore extends Submittable<Field> {
 
   createTicket = async(): Promise<void> => {
     this.setLoading(true)
-    const response = await this.ticketService.create(this.toJson())
+    const response = await this.ticketService.create(this.buildRequest())
 
     if (response == null || response.status > 400)
       this.appStore.notify(t("error.unexpected"))
@@ -38,10 +38,10 @@ export class TicketFormStore extends Submittable<Field> {
     this.setLoading(false)
   }
 
-  private toJson = (): TicketRequest => ({
-    applicationId: parseInt(this.fields[0].value),
+  private buildRequest = (): TicketRequest => ({
+    applicationId: parseInt(this.fields.get("applicationId").value),
     langCode: this.appStore.langCode,
-    comment: this.fields[1].value
+    comment: this.fields.get("comment").value
   }) as TicketRequest
 
 }

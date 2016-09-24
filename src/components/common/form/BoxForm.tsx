@@ -3,7 +3,7 @@ import * as React from "react"
 export const BoxForm = (props) =>
   <div className="login-form">
     <div className="header">
-      <span>{props.title}</span>
+      {props.title}
     </div>
     <div className="body">
       {props.children}

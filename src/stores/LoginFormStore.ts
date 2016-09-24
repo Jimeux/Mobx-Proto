@@ -12,17 +12,18 @@ export class LoginFormStore extends Submittable<Field> {
 
   @observable failed: boolean = false
 
-  @observable fields = [
-    Field.create(t("login.username"), [Rules.required, Rules.minLength(4), Rules.alphaNum]),
-    Field.create(t("login.password"), [Rules.required, Rules.minLength(4)])
-  ]
+  @observable fields = asMap({
+    username: Field.create(t("login.username"), [Rules.required, Rules.minLength(4), Rules.alphaNum]),
+    password: Field.create(t("login.password"), [Rules.required, Rules.minLength(4)])
+  })
 
   constructor(private appStore: AppStore) {
     super()
   }
 
   @action login = (): void => {
-    if (this.fields[0].value === "editor" && this.fields[1].value === "pass") {
+    if (this.fields.get("username").value === "editor" &&
+      this.fields.get("password").value === "pass") {
       this.fakeLogin({
         "id": 16,
         "email": "editor@jim.com",
@@ -30,7 +31,8 @@ export class LoginFormStore extends Submittable<Field> {
         "role": 4,
         "name": "Editor Jim"
       })
-    } else if (this.fields[0].value === "writer" && this.fields[1].value === "pass") {
+    } else if (this.fields.get("username").value === "writer" &&
+      this.fields.get("password").value === "pass") {
       this.fakeLogin({
         "id": 17,
         "email": "writer@jim.com",

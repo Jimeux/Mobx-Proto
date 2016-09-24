@@ -14,7 +14,7 @@ export class AppStore {
   @observable menuIsOpen: boolean = false
 
   private history: History
-  private clearNoticeTimeout: number
+  private clearNoticeTimeout: any
 
   constructor(history: History) {
     this.history = history

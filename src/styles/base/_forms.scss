@@ -32,9 +32,9 @@
 
 .text-field.error, .textarea-field.error {
   label {
-    color: $brand-danger;
+    color: $brand-danger !important;
   }
   input {
-    border-color: $brand-danger;
+    border-color: $brand-danger !important;
   }
 }

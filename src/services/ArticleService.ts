@@ -18,4 +18,8 @@ export class ArticleService extends BaseService {
     return {article, contents} as ArticleWithContents
   }
 
+  async updateValue(id: number, data: any): Promise<Response | null> {
+    return await this.putRequest(`/${id}/updateValue`, JSON.stringify(data))
+  }
+
 }

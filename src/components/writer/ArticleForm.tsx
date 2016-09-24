@@ -5,6 +5,7 @@ import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
 import {TextField} from "../../components/common/form/TextField"
 import {ArticleFormStore} from "../../stores/ArticleFormStore"
+import {Loader} from "../common/Loader"
 
 interface ArticleFormProps {
   readonly articleFormStore: ArticleFormStore
@@ -18,53 +19,39 @@ interface ArticleFormState {
 @observer([ArticleFormStore.Name])
 export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
 
-  constructor(props: ArticleFormProps) {
-    super(props)
-    this.state = {sticky: false}
-    const articleId = parseInt(props.params["id"])
+  private store = this.props.articleFormStore
+
+  componentDidMount() {
+    const articleId = parseInt(this.props.params["id"])
     this.props.articleFormStore.fetchArticle(articleId)
+    window.addEventListener("scroll", this.handleScroll)
   }
 
-  handleScroll = () =>
-    this.setState({sticky: window.pageYOffset >= 90})
-
-  componentDidMount = () =>
-    window.addEventListener("scroll", this.handleScroll)
-
-  componentWillUnmount = () =>
+  componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll)
+  }
+
+  handleScroll = () => this.store.setScrollPosition(window.pageYOffset)
 
   render() {
+    const {fields, loading, disabled, save, finish, stickyClass} = this.store
+
     return (
-      <div className={`article-form ${this.state.sticky ? "sticky" : ""}`}>
+      <div className={`article-form ${stickyClass}`}>
         <div className="body-wrapper">
-          {this.renderActionMenu()}
-          {this.renderForm()}
-          {this.renderContents()}
+          {this.renderActionMenu(stickyClass)}
+          {loading || fields.size <= 0 ? "Loading" : this.renderForm(fields, disabled, save, finish)}
         </div>
       </div>
     )
   }
 
-  getFormProps = () => {
-  }
-
-  renderContents = () => {
-    const store = this.props.articleFormStore
-    if (store.fields.length <= 0)
-      return null
-
-    const [field, ...rest] = store.fields
-
-    return <TextField field={field}/>
-  }
-
-  renderActionMenu = () =>
-    <div className={`action-menu ${this.state.sticky ? "sticky" : ""}`}>
+  renderActionMenu = (stickyClass) =>
+    <div className={`action-menu ${stickyClass}`}>
       <div className="breadcrumbs">
         <span className="active">Some ticket title</span>
         <span className="separator"><i className="material-icons">chevron_right</i></span>
-        <span>Write article</span>
+        <span>{t("article.write.write_article")}</span>
       </div>
       <div className="actions">
         <i className="material-icons">timer</i>
@@ -73,52 +60,32 @@ export class ArticleForm extends Component<ArticleFormProps, ArticleFormState> {
       </div>
     </div>
 
-  renderForm = () =>
+  renderForm = (fields, disabled, save, finish) =>
     <div className="body">
       <section>
-        <span className="heading">Introductory Article</span>
-
-        {/*<TextField type="text"
-                   label="Title"
-                   error={""}
-                   onChange={(e) => {}}/>
-
-        <TextAreaField label="Review"
-                       error={""}
-                       rows={5}
-                       onChange={() => {}}/>*/}
-
+        <span className="heading">{t("article.write.intro_article")}</span>
+        {this.renderField(fields.get("text"), save)}
       </section>
 
       <section>
-        <span className="heading">Recommended Points</span>
-        {/*<TextField type="text"
-                   label="Point 1"
-                   error={""}
-                   onChange={(e) => {}}/>
-        <TextField type="text"
-                   label="Point 2"
-                   error={""}
-                   onChange={(e) => {}}/>
-        <TextField type="text"
-                   label="Point 3"
-                   error={""}
-                   onChange={(e) => {}}/>*/}
+        <span className="heading">{t("article.write.points")}</span>
+        {this.renderField(fields.get("points_1"), save)}
+        {this.renderField(fields.get("points_2"), save)}
+        {this.renderField(fields.get("points_3"), save)}
       </section>
 
       <section>
         <div className="submit">
-          <button>
-            Submit
+          <button disabled={disabled} onClick={finish}>
+            {t("article.write.submit")}
           </button>
         </div>
       </section>
     </div>
 
+  renderField = (field, save) =>
+    <div className={`text-field ${field.error ? "error" : ""}`}>
+      <label>{/*{field.label}*/}{field.error}&nbsp;</label>
+      <input type="text" onChange={field.update} value={field.value} onBlur={() => save(field)}/>
+    </div>
 }
-
-const Text = ({value, error, onChange}) =>
-  <div className={`text-field ${error ? "error" : ""}`}>
-    <label>Text {error}</label>
-    <textarea value={value.value} rows={5} onChange={onChange}/>
-  </div>

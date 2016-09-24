@@ -16,6 +16,10 @@ export class TicketService extends BaseService {
     return await this.postRequest("/", JSON.stringify(ticket))
   }
 
+  async advance(id: number): Promise<Response | null> {
+    return await this.putRequest(`/${id}/progress`, JSON.stringify({}))
+  }
+
   async index (page: number): Promise<Array<Ticket>> {
     const response = await this.getRequest(`/status/0`)
     const ticketsJson = await response.json()
