@@ -73,7 +73,8 @@ const en = {
       },
       "publish": {
         "submit": "Publish"
-      }
+      },
+      "progress": "Article advanced to next stage"
     },
 
     "error": {
@@ -156,7 +157,8 @@ const ja = {
       },
       "publish": {
         "submit": "公開する"
-      }
+      },
+      "progress": "記事のステータスが更新されました"
     },
 
     "error": {
@@ -174,7 +176,7 @@ const ja = {
 i18next
   .use(LanguageDetector)
   .init({
-    lng: "en",
+    lng: "ja",
     fallbackLng: "en",
     resources: {
       "en": en,

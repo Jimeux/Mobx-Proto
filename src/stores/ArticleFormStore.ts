@@ -63,7 +63,7 @@ export class ArticleFormStore extends Submittable<ContentValueField> {
     else {
       const json = await response.json()
       if (response.ok) {
-        this.appStore.notify("Article progressed")
+        this.appStore.notify(t("article.progress"))
       } else {
         this.appStore.notify(JSON.stringify(json))
       }
