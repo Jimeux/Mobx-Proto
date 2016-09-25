@@ -22,8 +22,7 @@ export class Navbar extends Component<NavbarProps, {}> {
           <div className="nav-title-bar">
             <Brand openMenu={openMenu} currentUser={currentUser}/>
             <div className="nav-tabs">
-              <Link activeClassName="" to="/">Home</Link>
-              <Link activeClassName="active" to="/writer/tickets">Tickets</Link>
+              {this.props.children}
             </div>
             <UserMenu currentUser={currentUser} switchLocale={switchLocale} locale={locale} logout={logout}/>
           </div>

@@ -10,6 +10,16 @@ const en = {
     "nav": {
       "brand": "Appliv Cloud",
       "message": "You're logged in as {{title}}",
+      "tabs": {
+        "writer": {
+          "home": "Home",
+          "tickets": "Get a ticket"
+        },
+        "editor": {
+          "home": "Home",
+          "tickets": "Publish settings"
+        }
+      },
       "user_menu": {
         "settings": "Settings",
         "log_out": "Log out"
@@ -60,6 +70,9 @@ const en = {
         "points": "Recommended Points",
         "intro_article": "Introductory article",
         "submit": "Submit"
+      },
+      "publish": {
+        "submit": "Publish"
       }
     },
 
@@ -79,6 +92,16 @@ const ja = {
     "nav": {
       "brand": "アプリヴクラウド",
       "message": "{{title}}としてログインしています",
+      "tabs": {
+        "writer": {
+          "home": "ホーム",
+          "tickets": "チケット取得"
+        },
+        "editor": {
+          "home": "ホーム",
+          "tickets": "公開設定"
+        }
+      },
       "user_menu": {
         "settings": "設定",
         "log_out": "ログアウト"
@@ -129,6 +152,9 @@ const ja = {
         "points": "おすすめポイント",
         "intro_article": "紹介記事",
         "submit": "提出"
+      },
+      "publish": {
+        "submit": "公開する"
       }
     },
 
@@ -147,7 +173,7 @@ const ja = {
 i18next
   .use(LanguageDetector)
   .init({
-    lng: "ja",
+    lng: "en",
     fallbackLng: "en",
     resources: {
       "en": en,

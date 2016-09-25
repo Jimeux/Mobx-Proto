@@ -1,13 +1,15 @@
 import * as React from "react"
 import {Route, IndexRoute, IndexRedirect} from "react-router"
 import {LoginForm} from "./components/common/LoginForm"
-import {ArticleForm} from "./components/writer/ArticleForm"
-import {TicketList} from "./components/writer/TicketList"
+import {WriteArticleForm} from "./components/writer/WriteArticleForm"
+import {TicketListWriter} from "./components/writer/TicketListWriter"
 import {NotFound} from "./components/common/NotFound"
 import {MainLayout} from "./components/MainLayout"
 import {UserRole} from "./models/User"
 import {AppStore} from "./stores/AppStore"
 import {TicketForm} from "./components/editor/TicketForm"
+import {TicketListEditor} from "./components/editor/TicketListEditor"
+import {ViewArticleForm} from "./components/editor/ViewArticleForm"
 
 export const routes = (appStore: AppStore) => {
 
@@ -30,12 +32,15 @@ export const routes = (appStore: AppStore) => {
 
       <Route path="/writer" onEnter={authorise(UserRole.Writer)}>
         <IndexRedirect to="tickets" />
-        <Route path="tickets" component={TicketList}/>
-        <Route path="articles/create/:id" component={ArticleForm} onEnter={authorise(UserRole.Writer)}/>
+        <Route path="tickets" component={TicketListWriter}/>
+        <Route path="articles/create/:id" component={WriteArticleForm}/>
       </Route>
 
       <Route path="/editor" onEnter={authorise(UserRole.Editor)}>
-        <IndexRoute component={TicketForm}/>
+        <IndexRedirect to="tickets/create" />
+        <Route path="tickets/create" component={TicketForm}/>
+        <Route path="tickets" component={TicketListEditor}/>
+        <Route path="articles/view/:id" component={ViewArticleForm}/>
       </Route>
 
       <Route path="/login" component={LoginForm} onEnter={redirectHome}/>

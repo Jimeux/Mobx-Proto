@@ -4,7 +4,7 @@ import {observer} from "mobx-react"
 import {t} from "../../i18n/i18n"
 import {TicketFormStore} from "../../stores/TicketFormStore"
 import {Loader} from "../common/Loader"
-import {TextField} from "../common/form/TextField"
+import {TextField, TextAreaField} from "../common/form/Fields"
 import {BoxForm} from "../common/form/BoxForm"
 
 interface TicketFormProps {
@@ -25,7 +25,8 @@ export class TicketForm extends Component<TicketFormProps, {}> {
              onSubmit={createTicket}
              disabled={disabled}>
 
-      {fields.values().map((field, i) => <TextField key={i} field={field}/>)}
+      <TextField field={fields.get("applicationId")}/>
+      <TextAreaField field={fields.get("comment")}/>
 
     </BoxForm>
 

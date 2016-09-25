@@ -1,7 +1,7 @@
 import {observable, action, computed} from "mobx"
 import {AppStore} from "./AppStore"
 import {TicketService} from "../services/TicketService"
-import {Ticket} from "../models/Ticket"
+import {Ticket, TicketStatus} from "../models/Ticket"
 import {t} from "../i18n/i18n"
 
 export class TicketStore {
@@ -26,12 +26,12 @@ export class TicketStore {
   @action setLoading = (loading: boolean) =>
     this.loading = loading
 
-  fetchTickets = async(): Promise<void> => {
+  fetchTickets = async(status: TicketStatus): Promise<void> => {
     if (this.loading)
       return
     try {
       this.setLoading(true)
-      const tickets = await this.ticketService.index(this.page)
+      const tickets = await this.ticketService.index(status, this.page)
 
       if (tickets === null)
         this.appStore.notify(t("tickets.notice"))

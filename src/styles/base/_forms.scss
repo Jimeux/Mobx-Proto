@@ -33,6 +33,11 @@
 .text-field.error, .textarea-field.error {
   label {
     color: $brand-danger !important;
+
+    span {
+      font-size: 85%;
+      margin-left: 5px;
+    }
   }
   input {
     border-color: $brand-danger !important;

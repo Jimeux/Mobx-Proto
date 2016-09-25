@@ -23,7 +23,7 @@ export class Rules {
   }
 
   static positiveInt(s: string) {
-    return (Rules.integer(s) == null && parseInt(s) <= 0) ? t("error.positive_int") : null
+    return (Rules.integer(s) != null || parseInt(s) <= 0) ? t("error.positive_int") : null
   }
 
 }

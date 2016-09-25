@@ -4,8 +4,8 @@
 .article-form {
 
   .body-wrapper {
-    @include make-sm-column-offset(2);
-    @include make-sm-column(8, 0);
+    @include make-sm-column-offset(3);
+    @include make-sm-column(6, 0);
     margin: 40px;
     box-shadow: $elevation-4dp;
     border-radius: 2px;
@@ -15,7 +15,7 @@
     background: white;
 
     section {
-      padding: 34px 50px;
+      padding: 24px 50px;
       border-bottom: 1px solid $table-border-color;
 
       .heading {

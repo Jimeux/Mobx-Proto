@@ -2,7 +2,7 @@ import * as React from "react"
 import {Component} from "react"
 import {observer} from "mobx-react"
 import {LoginFormStore} from "../../stores/LoginFormStore"
-import {TextField} from "../../components/common/form/TextField"
+import {TextField} from "./form/Fields"
 import {t} from "../../i18n/i18n"
 import {BoxForm} from "./form/BoxForm"
 

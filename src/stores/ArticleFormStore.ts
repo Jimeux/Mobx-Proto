@@ -19,8 +19,6 @@ export class ArticleFormStore extends Submittable<ContentValueField> {
   private article: Article
   private contents: Array<Content> = []
 
-  @observable scrollPosition: number = 0
-
   constructor(private appStore: AppStore,
               private ticketService: TicketService,
               private articleService: ArticleService) {
@@ -89,13 +87,6 @@ export class ArticleFormStore extends Submittable<ContentValueField> {
     this.fields.merge(fields)
 
     this.setLoading(false)
-  }
-
-  @action setScrollPosition = (offset: number) =>
-    this.scrollPosition = offset
-
-  get stickyClass() {
-    return this.scrollPosition >= 90 ? "sticky" : ""
   }
 }
 
