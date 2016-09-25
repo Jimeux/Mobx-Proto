@@ -1,4 +1,4 @@
-import {observable, action, computed} from "mobx"
+import {observable, action, computed, asFlat, IObservableArray} from "mobx"
 import {AppStore} from "./AppStore"
 import {TicketService} from "../services/TicketService"
 import {Ticket, TicketStatus} from "../models/Ticket"
@@ -8,9 +8,8 @@ export class TicketStore {
 
   public static readonly Name: string = "ticketStore"
 
-  @observable tickets: Array<Ticket> = []
+  @observable tickets: IObservableArray<Ticket> = (new Array(10) as IObservableArray<Ticket>)
 
-  @observable initialised: boolean = false
   @observable loading: boolean = false
   @observable atEnd: boolean = false
   @observable page: number = 1
@@ -43,10 +42,11 @@ export class TicketStore {
   }
 
   @action receiveTickets = (tickets: Array<Ticket>) => {
-    this.initialised = true
     this.setLoading(false)
     if (tickets.length > 0) {
-      this.tickets = tickets
+      this.tickets.replace(tickets)
+      this.atEnd = false
+      this.page = 1
     }
   }
 

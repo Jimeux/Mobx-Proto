@@ -81,6 +81,7 @@ const en = {
       "min_length": " must be at least {{min}} characters long",
       "max_length": " must be no more than {{max}} characters long",
       "integer": " must be an integer",
+      "positive_int": "must be a positive whole number",
       "alpha_num": " can contain only letters, numbers and - or _",
       "unexpected": "An unexpected error occurred"
     }

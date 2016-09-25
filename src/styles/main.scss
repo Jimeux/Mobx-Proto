@@ -1,13 +1,10 @@
 @import "base/variables";
-
 @import "vendor/bootstrap";
-
 @import "components/navbar";
 @import "components/menu";
 @import "components/ticket-table";
 @import "components/article-form";
 @import "components/login-menu";
-
 @import "components/common/index";
 @import "base/forms";
 
@@ -21,30 +18,105 @@ button {
   outline: none !important;
 }
 
-.loader-bar {
-  height: 2px;
-  width: 100%;
+/* Progress Bar */
+.progress {
   position: absolute;
-  overflow: hidden;
-  background-color: $colorPink200;
-}
-
-.loader-bar:before{
+  height: 2px;
   display: block;
-  position: absolute;
-  content: "";
-  left: -200px;
-  width: 200px;
-  height: 2px;
-  background-color: $color100;
-  animation: loading 1.8s ease-in-out infinite;
+  width: 100%;
+  background-color: $colorPink200;
+  border-radius: 2px;
+  background-clip: padding-box;
+  //margin: 0.5rem 0 1rem 0;
+  overflow: hidden;
 }
 
-@keyframes loading {
-  from {left: -100px; width: 40%;}
-  50% {width: 40%;}
-  70% {width: 70%;}
-  80% { left: 50%;}
-  95% {left: 120%;}
-  to {left: 90%;}
+.progress .indeterminate {
+  background-color: $colorIndigo100;
+}
+
+.progress .indeterminate:before {
+  content: '';
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+
+.progress .indeterminate:after {
+  content: '';
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+  animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+  -webkit-animation-delay: 1.15s;
+  animation-delay: 1.15s;
+}
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@-webkit-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
 }

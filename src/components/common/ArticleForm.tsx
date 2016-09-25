@@ -8,11 +8,11 @@ import {TextField, TextAreaField} from "../common/form/Fields"
 import {Loader} from "./Loader"
 
 interface ArticleFormProps {
-  readonly loading: boolean,
-  readonly save: Function,
-  readonly getArticle: Function,
-  readonly readOnly: boolean,
-  readonly fields: ObservableMap<Field>
+  loading: boolean,
+  save: Function,
+  getArticle: Function,
+  readOnly: boolean,
+  fields: ObservableMap<Field>
 }
 
 interface ArticleFormState {

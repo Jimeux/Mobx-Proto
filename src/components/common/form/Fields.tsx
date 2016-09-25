@@ -7,27 +7,36 @@ interface FieldProps {
   readOnly?: boolean
   hideLabel?: boolean
   rows?: number
-  onBlur?: () => void
+  onBlur?: (field: Field) => void
 }
 
 export const TextField = observer(
-  ({field, readOnly = false, onBlur = () => {}, hideLabel = false}: FieldProps) =>
-
-  <div className={`text-field ${field.error ? "error" : ""}`}>
-    <label>{hideLabel ? null : field.label}<span>{field.error}</span></label>
-    {readOnly
-      ? <input disabled={true} type="text" value={field.value}/>
-      : <input type="text" onChange={field.update} value={field.value} onBlur={onBlur}/>}
-  </div>
+  ({field, readOnly = false, onBlur = (field) => {}, hideLabel = false}: FieldProps) =>
+    <div className={`text-field ${field.error ? "error" : ""}`}>
+      <label>{hideLabel ? null : field.label}<span>{field.error}</span></label>
+      {readOnly
+        ? <input disabled={true}
+                 type="text"
+                 value={field.value}/>
+        : <input type="text"
+                 onChange={field.update}
+                 value={field.value}
+                 onBlur={() => onBlur(field)}/>}
+    </div>
 )
 
 export const TextAreaField = observer(
-  ({field, rows = 3, readOnly = false, onBlur = () => {}, hideLabel = false}: FieldProps) =>
+  ({field, rows = 3, readOnly = false, onBlur = (field) => {}, hideLabel = false}: FieldProps) =>
 
-  <div className={`text-field ${field.error ? "error" : ""}`}>
-    <label>{hideLabel ? null : field.label}<span>{field.error}</span></label>
-    {readOnly
-      ? <textarea rows={rows} disabled={true} value={field.value}/>
-      : <textarea rows={rows} onChange={field.update} value={field.value} onBlur={onBlur}/>}
-  </div>
+    <div className={`text-field ${field.error ? "error" : ""}`}>
+      <label>{hideLabel ? null : field.label}<span>{field.error}</span></label>
+      {readOnly
+        ? <textarea rows={rows}
+                    disabled={true}
+                    value={field.value}/>
+        : <textarea rows={rows}
+                    onChange={field.update}
+                    value={field.value}
+                    onBlur={() => onBlur(field)}/>}
+    </div>
 )
